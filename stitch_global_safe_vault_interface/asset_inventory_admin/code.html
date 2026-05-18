@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#5e5e5d",
+                        "surface-dim": "#141313",
+                        "inverse-on-surface": "#313030",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "on-primary": "#303130",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "primary-fixed-dim": "#c7c6c4",
+                        "on-tertiary-container": "#646464",
+                        "on-secondary-container": "#b8b6d0",
+                        "secondary-fixed": "#e2e0fc",
+                        "outline": "#8e918e",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-fixed": "#1a1a2e",
+                        "background": "#141313",
+                        "primary-container": "#e3e2e0",
+                        "on-error": "#690005",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#e2e2e2",
+                        "tertiary": "#ffffff",
+                        "on-primary-fixed": "#1b1c1b",
+                        "secondary": "#c6c4df",
+                        "secondary-fixed-dim": "#c6c4df",
+                        "secondary-container": "#47475d",
+                        "inverse-surface": "#e5e2e1",
+                        "on-background": "#e5e2e1",
+                        "tertiary-container": "#e2e2e2",
+                        "surface-bright": "#3a3939",
+                        "primary": "#ffffff",
+                        "outline-variant": "#444845",
+                        "surface-container-high": "#2a2a29",
+                        "on-surface-variant": "#c4c7c4",
+                        "on-secondary-fixed-variant": "#45455b",
+                        "on-primary-fixed-variant": "#464746",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-tint": "#c7c6c4",
+                        "on-primary-container": "#646463",
+                        "on-error-container": "#ffdad6",
+                        "surface-container": "#201f1f",
+                        "surface-variant": "#353434",
+                        "surface": "#141313",
+                        "on-tertiary": "#303030",
+                        "on-secondary": "#2f2e43",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "primary-fixed": "#e3e2e0",
+                        "surface-container-highest": "#353434",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stroke-heavy": "4px",
+                        "gutter": "32px",
+                        "unit": "4px",
+                        "stroke-thin": "2px",
+                        "margin": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "body-lg": ["Inter"],
+                        "label-technical": ["JetBrains Mono"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-technical": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .chamfer-card {
+            clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0% 100%);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0e0e0e; }
+        ::-webkit-scrollbar-thumb { background: #8e918e; border: 2px solid #0e0e0e; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary selection:text-background overflow-hidden h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full px-gutter h-20 max-w-full bg-surface-container border-b-stroke-heavy border-outline z-50 fixed top-0">
+<div class="flex items-center gap-8">
+<span class="text-headline-md font-headline-md font-bold tracking-tighter text-primary">GLOBAL-SAFE ARCHITECT</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-primary font-bold border-b-stroke-heavy border-primary text-label-technical h-20 flex items-center px-2" href="#">ASSETS</a>
+<a class="text-on-surface-variant font-medium text-label-technical h-20 flex items-center px-2 hover:bg-primary hover:text-on-primary transition-colors duration-0" href="#">NETWORK</a>
+<a class="text-on-surface-variant font-medium text-label-technical h-20 flex items-center px-2 hover:bg-primary hover:text-on-primary transition-colors duration-0" href="#">VAULTS</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative bg-surface-container-highest border-stroke-thin border-outline px-4 py-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-label-technical placeholder:text-outline-variant w-48 uppercase" placeholder="QUERY_DATABASE..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center hover:bg-primary hover:text-on-primary"><span class="material-symbols-outlined">security</span></button>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-primary hover:text-on-primary"><span class="material-symbols-outlined">notifications_active</span></button>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-primary hover:text-on-primary"><span class="material-symbols-outlined">settings</span></button>
+</div>
+<button class="bg-primary text-on-primary px-6 h-10 font-bold text-label-technical hover:opacity-90 active:scale-95 border-stroke-heavy border-primary">SYSTEM LOCKDOWN</button>
+</div>
+</header>
+<div class="flex flex-1 pt-20 overflow-hidden">
+<!-- SideNavBar -->
+<aside class="flex flex-col h-screen py-gutter border-r-stroke-heavy border-outline bg-surface-container-low w-80 shrink-0">
+<div class="px-6 mb-8">
+<h2 class="text-headline-sm font-headline-sm font-bold text-primary">COMMAND CENTER</h2>
+<p class="text-label-technical text-on-surface-variant opacity-60">ADMINISTRATIVE_LEVEL_01</p>
+</div>
+<div class="px-4 mb-8">
+<button class="w-full bg-primary text-on-primary font-bold py-4 px-4 flex items-center gap-3 border-stroke-thin border-outline hover:opacity-90 transition-none">
+<span class="material-symbols-outlined">add_box</span>
+<span class="text-label-technical">NEW VAULT SESSION</span>
+</button>
+</div>
+<nav class="flex-1 space-y-2 px-4">
+<a class="bg-primary text-on-primary font-bold border-stroke-thin border-outline flex items-center gap-4 p-4 transition-none" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-label-technical">Inventory</span>
+</a>
+<a class="text-on-surface-variant hover:text-primary hover:bg-surface-bright flex items-center gap-4 p-4 transition-none" href="#">
+<span class="material-symbols-outlined">vital_signs</span>
+<span class="text-label-technical">Life Support</span>
+</a>
+<a class="text-on-surface-variant hover:text-primary hover:bg-surface-bright flex items-center gap-4 p-4 transition-none" href="#">
+<span class="material-symbols-outlined">database</span>
+<span class="text-label-technical">Access Logs</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-outline-variant/30 pt-4 px-4 space-y-2">
+<a class="text-on-surface-variant hover:text-primary hover:bg-surface-bright flex items-center gap-4 p-4 transition-none" href="#">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="text-label-technical">Diagnostics</span>
+</a>
+<a class="text-on-surface-variant hover:text-primary hover:bg-surface-bright flex items-center gap-4 p-4 transition-none" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span class="text-label-technical">Terminal</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-hidden flex bg-surface-dim">
+<!-- Asset Table Section -->
+<section class="flex-1 overflow-auto p-gutter flex flex-col gap-gutter">
+<header class="flex justify-between items-end">
+<div>
+<h1 class="font-headline-lg text-headline-lg uppercase">Inventory Assets</h1>
+<p class="font-label-technical text-on-surface-variant">ACTIVE_VAULT_TRACKING_ENABLED</p>
+</div>
+<div class="flex gap-4">
+<div class="border-stroke-thin border-outline p-4 bg-surface-container-lowest flex flex-col gap-1">
+<span class="text-label-technical text-outline-variant text-[10px]">TOTAL_VALUE</span>
+<span class="font-headline-md text-primary">$4.82B</span>
+</div>
+<div class="border-stroke-thin border-outline p-4 bg-surface-container-lowest flex flex-col gap-1">
+<span class="text-label-technical text-outline-variant text-[10px]">THREAT_LEVEL</span>
+<span class="font-headline-md text-error">NOMINAL</span>
+</div>
+</div>
+</header>
+<!-- Data Table -->
+<div class="border-stroke-heavy border-outline bg-surface-container-low overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container border-b-stroke-thin border-outline">
+<tr>
+<th class="p-4 font-label-technical text-on-surface-variant uppercase tracking-widest border-r border-outline-variant/20">Asset ID</th>
+<th class="p-4 font-label-technical text-on-surface-variant uppercase tracking-widest border-r border-outline-variant/20">Tier</th>
+<th class="p-4 font-label-technical text-on-surface-variant uppercase tracking-widest border-r border-outline-variant/20">Location</th>
+<th class="p-4 font-label-technical text-on-surface-variant uppercase tracking-widest border-r border-outline-variant/20">Status</th>
+<th class="p-4 font-label-technical text-on-surface-variant uppercase tracking-widest border-r border-outline-variant/20">Weight</th>
+<th class="p-4 font-label-technical text-on-surface-variant uppercase tracking-widest">Thermal</th>
+</tr>
+</thead>
+<tbody class="font-label-technical">
+<!-- Row 1 Selected -->
+<tr class="border-b border-outline-variant/20 bg-primary text-on-primary">
+<td class="p-4 font-bold border-r border-on-primary/10">GS-AU-999-001</td>
+<td class="p-4 border-r border-on-primary/10">OMEGA_6</td>
+<td class="p-4 border-r border-on-primary/10">VAULT_A7_ZURICH</td>
+<td class="p-4 border-r border-on-primary/10">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-on-primary"></div>
+                                        SECURED
+                                    </div>
+</td>
+<td class="p-4 border-r border-on-primary/10">12.44 KG</td>
+<td class="p-4">19.2°C</td>
+</tr>
+<tr class="border-b border-outline-variant/20 hover:bg-surface-bright transition-none group">
+<td class="p-4 text-primary group-hover:text-primary border-r border-outline-variant/20">GS-ENC-X-042</td>
+<td class="p-4 border-r border-outline-variant/20">ULTRA_SECRET</td>
+<td class="p-4 border-r border-outline-variant/20">LOCAL_BUFFER_01</td>
+<td class="p-4 border-r border-outline-variant/20 text-on-secondary-container">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-on-secondary-container"></div>
+                                        TRANSIT
+                                    </div>
+</td>
+<td class="p-4 border-r border-outline-variant/20">0.05 KG</td>
+<td class="p-4">24.5°C</td>
+</tr>
+<tr class="border-b border-outline-variant/20 hover:bg-surface-bright transition-none group">
+<td class="p-4 text-primary group-hover:text-primary border-r border-outline-variant/20">GS-PROTO-HYDR</td>
+<td class="p-4 border-r border-outline-variant/20">EXPERIMENTAL</td>
+<td class="p-4 border-r border-outline-variant/20">SITE_B_ARCTIC</td>
+<td class="p-4 border-r border-outline-variant/20">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-primary"></div>
+                                        SECURED
+                                    </div>
+</td>
+<td class="p-4 border-r border-outline-variant/20">842.10 KG</td>
+<td class="p-4 text-error">-124.0°C</td>
+</tr>
+<tr class="border-b border-outline-variant/20 hover:bg-surface-bright transition-none group">
+<td class="p-4 text-primary group-hover:text-primary border-r border-outline-variant/20">GS-AU-999-002</td>
+<td class="p-4 border-r border-outline-variant/20">OMEGA_6</td>
+<td class="p-4 border-r border-outline-variant/20">VAULT_A7_ZURICH</td>
+<td class="p-4 border-r border-outline-variant/20">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-primary"></div>
+                                        SECURED
+                                    </div>
+</td>
+<td class="p-4 border-r border-outline-variant/20">12.44 KG</td>
+<td class="p-4">19.4°C</td>
+</tr>
+<tr class="border-b border-outline-variant/20 hover:bg-surface-bright transition-none group">
+<td class="p-4 text-primary group-hover:text-primary border-r border-outline-variant/20">GS-SATELLITE-MOD</td>
+<td class="p-4 border-r border-outline-variant/20">SYSTEMS</td>
+<td class="p-4 border-r border-outline-variant/20">STORAGE_BAY_4</td>
+<td class="p-4 border-r border-outline-variant/20 text-on-secondary-container">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-on-secondary-container"></div>
+                                        TRANSIT
+                                    </div>
+</td>
+<td class="p-4 border-r border-outline-variant/20">45.00 KG</td>
+<td class="p-4">22.1°C</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Bento Style Secondary Info -->
+<div class="grid grid-cols-3 gap-6">
+<div class="border-stroke-thin border-outline bg-surface-container-high p-6 chamfer-card">
+<div class="flex justify-between items-start mb-4">
+<span class="text-label-technical font-bold">ATMOSPHERIC_CHECK</span>
+<span class="material-symbols-outlined text-primary">ac_unit</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-label-technical border-b border-outline-variant/20 pb-2">
+<span>HUMIDITY</span>
+<span>34.2%</span>
+</div>
+<div class="flex justify-between text-label-technical border-b border-outline-variant/20 pb-2">
+<span>PRESSURE</span>
+<span>101.3 kPa</span>
+</div>
+<div class="flex justify-between text-label-technical">
+<span>OXYGEN</span>
+<span>20.9%</span>
+</div>
+</div>
+</div>
+<div class="border-stroke-thin border-outline bg-surface-container-high p-6 chamfer-card">
+<div class="flex justify-between items-start mb-4">
+<span class="text-label-technical font-bold">SECURITY_LOG</span>
+<span class="material-symbols-outlined text-primary">history</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-3">
+<div class="w-1.5 h-1.5 bg-primary"></div>
+<span class="text-label-technical text-[12px]">14:20:01 - ACCESS_GRANTED_U_091</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-1.5 h-1.5 bg-error"></div>
+<span class="text-label-technical text-[12px]">13:44:12 - AUTH_FAILURE_IP_192.11</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-1.5 h-1.5 bg-primary"></div>
+<span class="text-label-technical text-[12px]">11:05:59 - PERIODIC_SCAN_COMPLETE</span>
+</div>
+</div>
+</div>
+<div class="border-stroke-thin border-outline bg-surface-container-high p-6 chamfer-card">
+<div class="flex justify-between items-start mb-4">
+<span class="text-label-technical font-bold">ACTIVE_TRAILS</span>
+<span class="material-symbols-outlined text-primary">route</span>
+</div>
+<div class="relative h-20 bg-background border border-outline-variant/20 flex items-center justify-center">
+<span class="text-label-technical text-outline-variant opacity-30 text-[10px]">RADAR_VIEW_INITIALIZING...</span>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-12 h-12 border-2 border-primary/20 rounded-full animate-pulse"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Asset Detail Panel -->
+<aside class="w-[480px] border-l-stroke-heavy border-outline bg-surface-container-low flex flex-col">
+<div class="p-gutter border-b border-outline-variant/30 bg-surface-container">
+<div class="flex justify-between items-start mb-4">
+<span class="bg-primary text-on-primary px-3 py-1 font-label-technical font-bold text-[10px]">SELECTED_ASSET</span>
+<button class="material-symbols-outlined hover:text-primary transition-none">close</button>
+</div>
+<h3 class="font-headline-md text-headline-md leading-none mb-2">GS-AU-999-001</h3>
+<p class="text-label-technical text-on-surface-variant font-bold tracking-widest">GOLD_BULLION_RESERVE_CLASS_AA</p>
+</div>
+<div class="flex-1 overflow-auto p-gutter space-y-gutter">
+<!-- High-Res Image Placeholder -->
+<div class="relative border-stroke-heavy border-primary bg-background overflow-hidden aspect-square chamfer-card">
+<img class="w-full h-full object-cover grayscale opacity-80 mix-blend-screen" data-alt="A high-contrast, macro photograph of a solid gold bullion bar with stamped serial numbers. The lighting is harsh and directional, creating deep shadows and brilliant highlights on the brushed metal surface. The background is a pitch-black void, emphasizing the weight and solidity of the object. The overall mood is one of extreme security, wealth, and industrial precision, fitting a brutalist high-end vault interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC7kTW4H9qCaF9WPbTr1oBmv5PM0FIN2e_ulIOsYTFlUsU6XcvV1m6HKEa7nWDKTxk7eZRpEcXgLsH8b5j-gKrAzZKHmVXVTvgLyd_q6DIIphkyRsH4CseVyyvxhIYkHsSv3NoOzs78rLF6YMhkyImpr1C8rOP0GtEJU79EciffB847YmfSiwVgWfB8DikVdKJCyX88kQj4otKYzyjyuZSQXhY2pAbdVyV7uyfu3Y4GzXRF5SWzzrEoTljS4s2Ic7pDn_0LwZEk4VJ"/>
+<div class="absolute top-4 left-4 border border-primary bg-background/80 px-2 py-1 text-label-technical text-[10px] text-primary">ENHANCED_VISUAL_01</div>
+<div class="absolute bottom-0 right-0 p-2">
+<span class="material-symbols-outlined text-primary text-4xl">center_focus_weak</span>
+</div>
+</div>
+<!-- Movement History -->
+<div>
+<h4 class="text-label-technical font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">list_alt</span>
+                            MOVEMENT_LOG_LEDGER
+                        </h4>
+<div class="space-y-4 border-l-stroke-thin border-outline ml-2 pl-6 relative">
+<div class="relative">
+<div class="absolute -left-[28px] top-1 w-3 h-3 bg-primary"></div>
+<span class="text-label-technical text-[11px] text-outline-variant">2023.10.12 - 09:42</span>
+<p class="text-label-technical font-bold text-primary">DEPOSITED_IN_VAULT_A7</p>
+<p class="text-label-technical text-[12px] opacity-60">HAND_OFF: AGENT_DELTA_9</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[28px] top-1 w-3 h-3 border-2 border-outline-variant bg-surface-container-low"></div>
+<span class="text-label-technical text-[11px] text-outline-variant">2023.10.11 - 14:15</span>
+<p class="text-label-technical font-bold">TRANSIT_VIA_ARMOURED_01</p>
+<p class="text-label-technical text-[12px] opacity-60">LOCATION: BERLIN_TERMINAL</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[28px] top-1 w-3 h-3 border-2 border-outline-variant bg-surface-container-low"></div>
+<span class="text-label-technical text-[11px] text-outline-variant">2023.10.10 - 22:00</span>
+<p class="text-label-technical font-bold">EXTRACTED_FROM_VAULT_B1</p>
+<p class="text-label-technical text-[12px] opacity-60">AUTH: LEVEL_5_OVERRIDE</p>
+</div>
+</div>
+</div>
+<!-- Technical Readouts -->
+<div class="grid grid-cols-2 gap-4">
+<div class="border border-outline-variant/30 p-4 bg-surface-container-highest">
+<span class="text-label-technical text-[10px] text-outline-variant block mb-1">PURITY_INDEX</span>
+<span class="font-label-technical text-headline-md leading-none text-primary">99.99%</span>
+</div>
+<div class="border border-outline-variant/30 p-4 bg-surface-container-highest">
+<span class="text-label-technical text-[10px] text-outline-variant block mb-1">SCAN_HASH</span>
+<span class="font-label-technical text-label-technical break-all text-[10px]">E291_X44_Z01</span>
+</div>
+</div>
+</div>
+<div class="p-gutter border-t border-outline-variant/30 grid grid-cols-2 gap-4">
+<button class="bg-surface-bright text-primary border-stroke-thin border-outline py-4 font-bold text-label-technical hover:bg-primary hover:text-on-primary transition-none">PRINT_MANIFEST</button>
+<button class="bg-primary text-on-primary border-stroke-thin border-outline py-4 font-bold text-label-technical active:scale-95 transition-none">AUTHORIZE_MOVE</button>
+</div>
+</aside>
+</main>
+</div>
+</body></html>

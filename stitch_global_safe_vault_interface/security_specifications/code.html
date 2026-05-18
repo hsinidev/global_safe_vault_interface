@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Global-Safe Architect | Security Specifications</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #000000;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+        }
+        .chamfer-card {
+            clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .technical-grid {
+            background-image: radial-gradient(circle, #353434 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ffb4ab",
+                      "surface-container-high": "#2a2a29",
+                      "surface-variant": "#353434",
+                      "surface": "#141313",
+                      "on-error-container": "#ffdad6",
+                      "primary": "#ffffff",
+                      "tertiary-fixed-dim": "#c6c6c6",
+                      "on-secondary-container": "#b8b6d0",
+                      "outline": "#8e918e",
+                      "surface-container-highest": "#353434",
+                      "primary-fixed-dim": "#c7c6c4",
+                      "on-primary-fixed": "#1b1c1b",
+                      "on-secondary": "#2f2e43",
+                      "secondary-container": "#47475d",
+                      "on-tertiary-fixed-variant": "#474747",
+                      "primary-fixed": "#e3e2e0",
+                      "surface-dim": "#141313",
+                      "surface-tint": "#c7c6c4",
+                      "secondary-fixed": "#e2e0fc",
+                      "secondary": "#c6c4df",
+                      "primary-container": "#e3e2e0",
+                      "on-error": "#690005",
+                      "outline-variant": "#444845",
+                      "on-surface-variant": "#c4c7c4",
+                      "surface-container": "#201f1f",
+                      "on-tertiary-fixed": "#1b1b1b",
+                      "on-surface": "#e5e2e1",
+                      "secondary-fixed-dim": "#c6c4df",
+                      "on-primary-container": "#646463",
+                      "inverse-surface": "#e5e2e1",
+                      "tertiary": "#ffffff",
+                      "on-tertiary-container": "#646464",
+                      "background": "#141313",
+                      "surface-bright": "#3a3939",
+                      "on-secondary-fixed-variant": "#45455b",
+                      "error-container": "#93000a",
+                      "surface-container-lowest": "#0e0e0e",
+                      "inverse-on-surface": "#313030",
+                      "tertiary-fixed": "#e2e2e2",
+                      "surface-container-low": "#1c1b1b",
+                      "on-primary-fixed-variant": "#464746",
+                      "tertiary-container": "#e2e2e2",
+                      "inverse-primary": "#5e5e5d",
+                      "on-secondary-fixed": "#1a1a2e",
+                      "on-primary": "#303130",
+                      "on-background": "#e5e2e1",
+                      "on-tertiary": "#303030"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "32px",
+                      "margin": "64px",
+                      "stroke-thin": "2px",
+                      "stroke-heavy": "4px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Space Grotesk"],
+                      "label-technical": ["JetBrains Mono"],
+                      "headline-md": ["Space Grotesk"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-technical": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface text-primary border-b-stroke-heavy border-outline flex justify-between items-center px-gutter h-16">
+<div class="flex items-center gap-unit">
+<span class="material-symbols-outlined text-primary" data-icon="security">security</span>
+<h1 class="font-headline-md text-[20px] font-bold uppercase tracking-tight">GLOBAL-SAFE ARCHITECT</h1>
+</div>
+<button class="flex items-center justify-center w-10 h-10 hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 pb-24 px-4 min-h-screen technical-grid">
+<!-- Screen Title & Status -->
+<section class="mb-8">
+<div class="flex items-baseline justify-between mb-2">
+<h2 class="font-label-technical text-label-technical text-primary-fixed uppercase tracking-widest">System Architecture // Specification</h2>
+<span class="text-[10px] font-label-technical text-outline">REF: GS-882-VLT</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest mb-6">
+<div class="h-full w-2/3 bg-primary"></div>
+</div>
+</section>
+<!-- Hardened Overview Card -->
+<div class="mb-8 p-stroke-heavy bg-[#1A1A2E] border-stroke-heavy border-primary chamfer-card">
+<div class="bg-surface p-4 flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary leading-none mb-1">ARMORED SHELL</h3>
+<p class="font-label-technical text-xs text-on-surface-variant">CONFIGURATION: TITANIUM-PLATINUM WEAVE</p>
+</div>
+<div class="w-12 h-12 flex items-center justify-center border-stroke-thin border-primary bg-primary text-on-primary">
+<span class="material-symbols-outlined" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+</div>
+<div class="relative w-full aspect-video bg-surface-container-lowest border-stroke-thin border-outline overflow-hidden">
+<img alt="Armored Surface Detail" class="w-full h-full object-cover opacity-60 grayscale" data-alt="A macro photography shot of high-grade industrial armor plating featuring a brushed platinum silver texture. The surface is punctuated by heavy-duty hexagonal bolts and deep-etched technical channels. The lighting is harsh and dramatic, creating high-contrast highlights on the metallic edges against a deep indigo background. The overall aesthetic is one of absolute physical security and architectural brutalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkT21dWuAjfEX8GxnjQZ9D6JiAqTbQSdTHYPrlzaDQP3PnjqAqrgO-lm5u-KKobOBa0BmQK_4M1pRnHsXFcgaHRgHBVvcRsrYoQQ9oWpIOP9_4dP2v9DazvtdwJmM2Ev3u493mn9j7qz3fIXmrp9K5kMwVa5c6wC_TUdS1JCxGDmtzQx1kBX3pbHawsZpO6a_b3Iglfgss3l3XWDCPlbS7z4YyXXG7G9aYjA0uT5RFhUlKYIWvl-52u-pjmKJ-qVHIETFrl01t1W7-"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="border-stroke-thin border-primary p-2 bg-background/80 backdrop-blur-sm">
+<span class="font-label-technical text-[10px] text-primary">SCANNED INTEGRITY: 99.9%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Technical Readout Bento Grid -->
+<div class="grid grid-cols-1 gap-4 mb-8">
+<!-- Ballistic Protection -->
+<div class="border-stroke-heavy border-outline bg-[#1A1A2E] p-4 flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+<h4 class="font-label-technical text-primary font-bold uppercase">Ballistic Rating</h4>
+</div>
+<div class="flex items-end justify-between">
+<div class="space-y-1">
+<p class="text-4xl font-headline-lg text-primary">B7+</p>
+<p class="font-label-technical text-[10px] text-outline">CERTIFIED: NIJ LEVEL IV EXCEEDED</p>
+</div>
+<div class="flex gap-1">
+<div class="w-2 h-8 bg-primary"></div>
+<div class="w-2 h-8 bg-primary"></div>
+<div class="w-2 h-8 bg-primary"></div>
+<div class="w-2 h-8 bg-primary"></div>
+<div class="w-2 h-8 bg-outline/30"></div>
+</div>
+</div>
+</div>
+<!-- Thermal Shielding -->
+<div class="border-stroke-heavy border-outline bg-[#1A1A2E] p-4 flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="thermostat">thermostat</span>
+<h4 class="font-label-technical text-primary font-bold uppercase">Thermal Shield</h4>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="font-label-technical text-[10px] text-outline mb-1">INT. TEMP</p>
+<p class="text-2xl font-label-technical text-primary">21.4°C</p>
+</div>
+<div>
+<p class="font-label-technical text-[10px] text-outline mb-1">THRESHOLD</p>
+<p class="text-2xl font-label-technical text-primary">1200°C</p>
+</div>
+</div>
+<div class="w-full h-2 bg-surface-container-highest overflow-hidden">
+<div class="h-full w-1/12 bg-primary"></div>
+</div>
+</div>
+<!-- Structural Reinforcement -->
+<div class="border-stroke-heavy border-outline bg-[#1A1A2E] p-4 flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="architecture">architecture</span>
+<h4 class="font-label-technical text-primary font-bold uppercase">Structural Integrity</h4>
+</div>
+<div class="p-4 border-stroke-thin border-outline bg-surface-container-lowest">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-technical text-[10px] text-primary">REINFORCEMENT LVL</span>
+<span class="font-label-technical text-[10px] text-primary">HEAVY-DUTY</span>
+</div>
+<div class="space-y-1">
+<div class="h-1 w-full bg-outline/20"></div>
+<div class="h-1 w-full bg-primary"></div>
+<div class="h-1 w-full bg-outline/20"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- System-Check Simulation Button -->
+<button class="w-full group mb-12 relative overflow-hidden">
+<div class="absolute inset-0 bg-primary translate-y-full group-active:translate-y-0 transition-transform duration-75"></div>
+<div class="relative border-stroke-heavy border-primary p-6 bg-transparent group-active:bg-primary flex items-center justify-center gap-4 transition-colors">
+<span class="material-symbols-outlined text-primary group-active:text-on-primary" data-icon="sync" data-weight="fill">sync</span>
+<span class="font-label-technical text-lg font-bold text-primary group-active:text-on-primary uppercase tracking-[0.2em]">Initiate System Check</span>
+</div>
+<!-- Hardware Status Lights -->
+<div class="flex justify-between mt-2 px-1">
+<div class="flex gap-2">
+<div class="w-3 h-3 bg-primary"></div>
+<div class="w-3 h-3 bg-primary"></div>
+<div class="w-3 h-3 bg-outline/30"></div>
+</div>
+<span class="font-label-technical text-[10px] text-primary uppercase">Ready for Simulation</span>
+</div>
+</button>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface text-on-surface-variant border-t-stroke-heavy border-outline h-20 flex justify-around items-center">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest transition-none" href="#">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+<span class="font-label-technical text-[10px] uppercase mt-1">Vault</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary text-on-primary font-bold px-4 py-1 border-stroke-thin border-on-primary" href="#">
+<span class="material-symbols-outlined" data-icon="air" style="font-variation-settings: 'FILL' 1;">air</span>
+<span class="font-label-technical text-[10px] uppercase mt-1">Vitals</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest transition-none" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-technical text-[10px] uppercase mt-1">Inventory</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest transition-none" href="#">
+<span class="material-symbols-outlined" data-icon="emergency">emergency</span>
+<span class="font-label-technical text-[10px] uppercase mt-1">Access</span>
+</a>
+</nav>
+</body></html>

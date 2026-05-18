@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=JetBrains+Mono:wght@100..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ffb4ab",
+                    "surface-container-high": "#2a2a29",
+                    "surface-variant": "#353434",
+                    "surface": "#141313",
+                    "on-error-container": "#ffdad6",
+                    "primary": "#ffffff",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "on-secondary-container": "#b8b6d0",
+                    "outline": "#8e918e",
+                    "surface-container-highest": "#353434",
+                    "primary-fixed-dim": "#c7c6c4",
+                    "on-primary-fixed": "#1b1c1b",
+                    "on-secondary": "#2f2e43",
+                    "secondary-container": "#47475d",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "primary-fixed": "#e3e2e0",
+                    "surface-dim": "#141313",
+                    "surface-tint": "#c7c6c4",
+                    "secondary-fixed": "#e2e0fc",
+                    "secondary": "#c6c4df",
+                    "primary-container": "#e3e2e0",
+                    "on-error": "#690005",
+                    "outline-variant": "#444845",
+                    "on-surface-variant": "#c4c7c4",
+                    "surface-container": "#201f1f",
+                    "on-tertiary-fixed": "#1b1b1b",
+                    "on-surface": "#e5e2e1",
+                    "secondary-fixed-dim": "#c6c4df",
+                    "on-primary-container": "#646463",
+                    "inverse-surface": "#e5e2e1",
+                    "tertiary": "#ffffff",
+                    "on-tertiary-container": "#646464",
+                    "background": "#141313",
+                    "surface-bright": "#3a3939",
+                    "on-secondary-fixed-variant": "#45455b",
+                    "error-container": "#93000a",
+                    "surface-container-lowest": "#0e0e0e",
+                    "inverse-on-surface": "#313030",
+                    "tertiary-fixed": "#e2e2e2",
+                    "surface-container-low": "#1c1b1b",
+                    "on-primary-fixed-variant": "#464746",
+                    "tertiary-container": "#e2e2e2",
+                    "inverse-primary": "#5e5e5d",
+                    "on-secondary-fixed": "#1a1a2e",
+                    "on-primary": "#303130",
+                    "on-background": "#e5e2e1",
+                    "on-tertiary": "#303030"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "32px",
+                    "margin": "64px",
+                    "stroke-thin": "2px",
+                    "stroke-heavy": "4px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Space Grotesk"],
+                    "label-technical": ["JetBrains Mono"],
+                    "headline-md": ["Space Grotesk"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-technical": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .chamfer-card {
+            clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+        }
+        .etched-line {
+            background-image: repeating-linear-gradient(90deg, #8e918e 0, #8e918e 1px, transparent 1px, transparent 4px);
+        }
+        .circular-gauge {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: conic-gradient(from 180deg, #ffffff var(--percent), #47475d var(--percent));
+        }
+        .circular-gauge-inner {
+            position: absolute;
+            inset: 8px;
+            border-radius: 50%;
+            background: #141313;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #8e918e;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface border-b-stroke-heavy border-outline dark:border-outline fixed top-0 left-0 w-full z-50 flex justify-between items-center w-full px-gutter h-16">
+<div class="flex items-center gap-unit">
+<span class="material-symbols-outlined text-primary dark:text-primary" data-icon="security">security</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary tracking-tighter uppercase">GLOBAL-SAFE ARCHITECT</h1>
+</div>
+<div class="flex items-center">
+<button class="hover:bg-primary hover:text-on-primary transition-colors duration-0 p-2">
+<span class="material-symbols-outlined" data-icon="notifications_active" data-weight="fill" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+</button>
+</div>
+</header>
+<main class="pt-24 px-4 max-w-md mx-auto space-y-6">
+<!-- Status Header Section -->
+<section class="flex flex-col space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-technical text-label-technical text-on-surface-variant uppercase tracking-widest">SYSTEM: LIFE_SUPPORT_01</span>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-primary border-stroke-thin border-outline"></div>
+<span class="font-label-technical text-label-technical text-primary">OPERATIONAL</span>
+</div>
+</div>
+<div class="h-1 etched-line w-full opacity-30"></div>
+</section>
+<!-- Main Vital Gauges: Bento Style -->
+<section class="grid grid-cols-2 gap-4">
+<!-- Air Filtration -->
+<div class="bg-surface-container border-stroke-thin border-outline chamfer-card p-4 flex flex-col items-center justify-between h-48">
+<span class="font-label-technical text-label-technical uppercase self-start">Air Filtration</span>
+<div class="circular-gauge" style="--percent: 88%;">
+<div class="circular-gauge-inner">
+<span class="font-label-technical text-headline-md">88</span>
+</div>
+</div>
+<div class="flex justify-between w-full font-label-technical text-[10px] uppercase text-on-surface-variant">
+<span>Clean</span>
+<span>94% EFF</span>
+</div>
+</div>
+<!-- Oxygen Levels -->
+<div class="bg-surface-container border-stroke-thin border-outline chamfer-card p-4 flex flex-col items-center justify-between h-48">
+<span class="font-label-technical text-label-technical uppercase self-start">Oxygen (O2)</span>
+<div class="w-full h-full flex items-center justify-center relative">
+<div class="h-24 w-12 border-stroke-thin border-outline relative bg-surface-container-lowest overflow-hidden">
+<div class="absolute bottom-0 left-0 w-full bg-primary h-[82%]"></div>
+<div class="absolute inset-0 flex flex-col justify-around px-1 pointer-events-none">
+<div class="h-[1px] w-full bg-outline opacity-50"></div>
+<div class="h-[1px] w-full bg-outline opacity-50"></div>
+<div class="h-[1px] w-full bg-outline opacity-50"></div>
+</div>
+</div>
+<span class="ml-4 font-headline-md text-primary">21%</span>
+</div>
+<span class="font-label-technical text-[10px] uppercase text-on-surface-variant">NOMINAL</span>
+</div>
+<!-- Internal Pressure -->
+<div class="col-span-2 bg-on-secondary-fixed border-stroke-heavy border-primary chamfer-card p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-label-technical text-label-technical text-primary uppercase">Internal Pressure</h3>
+<p class="font-headline-md text-primary">101.325 <span class="text-label-technical">kPa</span></p>
+</div>
+<span class="material-symbols-outlined text-primary scale-125" data-icon="air">air</span>
+</div>
+<!-- Technical Bar Chart -->
+<div class="flex items-end gap-1 h-12 w-full border-b border-outline">
+<div class="flex-1 bg-primary/20 h-[60%]"></div>
+<div class="flex-1 bg-primary/30 h-[65%]"></div>
+<div class="flex-1 bg-primary/40 h-[70%]"></div>
+<div class="flex-1 bg-primary/50 h-[80%]"></div>
+<div class="flex-1 bg-primary/60 h-[75%]"></div>
+<div class="flex-1 bg-primary/70 h-[85%]"></div>
+<div class="flex-1 bg-primary h-[90%]"></div>
+<div class="flex-1 bg-primary/80 h-[82%]"></div>
+</div>
+<div class="mt-2 flex justify-between font-label-technical text-[10px] text-on-surface-variant uppercase">
+<span>T-60M</span>
+<span>Real-time Flux</span>
+<span>Live</span>
+</div>
+</div>
+</section>
+<!-- Status Grid -->
+<section class="space-y-4">
+<h4 class="font-label-technical text-label-technical uppercase text-outline">Sub-System Telemetry</h4>
+<div class="bg-surface-container-low border-stroke-thin border-outline p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 flex items-center justify-center border-stroke-thin border-outline">
+<span class="material-symbols-outlined text-[18px]" data-icon="thermostat">thermostat</span>
+</div>
+<div>
+<p class="font-label-technical text-xs text-on-surface-variant uppercase">Module Temp</p>
+<p class="font-label-technical text-lg">22.4°C</p>
+</div>
+</div>
+<div class="w-4 h-4 bg-primary"></div>
+</div>
+<div class="bg-surface-container-low border-stroke-thin border-outline p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 flex items-center justify-center border-stroke-thin border-outline">
+<span class="material-symbols-outlined text-[18px]" data-icon="water_drop">water_drop</span>
+</div>
+<div>
+<p class="font-label-technical text-xs text-on-surface-variant uppercase">Humidity</p>
+<p class="font-label-technical text-lg">45% RH</p>
+</div>
+</div>
+<div class="w-4 h-4 bg-primary"></div>
+</div>
+<div class="bg-surface-container-low border-stroke-thin border-outline p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 flex items-center justify-center border-stroke-thin border-outline">
+<span class="material-symbols-outlined text-[18px]" data-icon="co2">co2</span>
+</div>
+<div>
+<p class="font-label-technical text-xs text-on-surface-variant uppercase">CO2 Scrubbing</p>
+<p class="font-label-technical text-lg">0.03%</p>
+</div>
+</div>
+<div class="w-4 h-4 bg-primary"></div>
+</div>
+</section>
+<!-- Emergency Override Controls -->
+<section class="bg-surface-container-highest border-stroke-heavy border-error-container p-6 space-y-4">
+<div class="flex items-center gap-2 text-error">
+<span class="material-symbols-outlined" data-icon="emergency" data-weight="fill" style="font-variation-settings: 'FILL' 1;">emergency</span>
+<h3 class="font-label-technical text-label-technical uppercase font-bold">Emergency Override</h3>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="bg-surface border-stroke-thin border-error text-error p-4 flex flex-col items-center justify-center gap-2 active:scale-95 transition-none">
+<span class="material-symbols-outlined" data-icon="valve">valve</span>
+<span class="font-label-technical text-[10px] uppercase text-center">Seal Bulkhead</span>
+</button>
+<button class="bg-error text-on-error border-stroke-thin border-on-error p-4 flex flex-col items-center justify-center gap-2 active:scale-95 transition-none">
+<span class="material-symbols-outlined" data-icon="restart_alt">restart_alt</span>
+<span class="font-label-technical text-[10px] uppercase text-center">Cycle Scrubbers</span>
+</button>
+</div>
+<div class="bg-surface border-stroke-thin border-outline p-4 flex items-center justify-between">
+<span class="font-label-technical text-label-technical uppercase">Vent Atmosphere</span>
+<!-- Industrial Toggle -->
+<button class="w-16 h-8 bg-surface-variant border-stroke-thin border-outline relative">
+<div class="absolute left-1 top-1 bottom-1 w-6 bg-outline"></div>
+</button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 border-t-stroke-heavy border-outline dark:border-outline flex justify-around items-center w-full h-20 bg-surface dark:bg-surface">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest dark:hover:bg-surface-container-highest transition-none">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+<span class="font-label-technical text-label-technical uppercase">Vault</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary text-on-primary font-bold px-4 py-1 border-stroke-thin border-on-primary">
+<span class="material-symbols-outlined" data-icon="air">air</span>
+<span class="font-label-technical text-label-technical uppercase">Vitals</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest dark:hover:bg-surface-container-highest transition-none">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-technical text-label-technical uppercase">Inventory</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest dark:hover:bg-surface-container-highest transition-none">
+<span class="material-symbols-outlined" data-icon="emergency">emergency</span>
+<span class="font-label-technical text-label-technical uppercase">Access</span>
+</button>
+</nav>
+</body></html>

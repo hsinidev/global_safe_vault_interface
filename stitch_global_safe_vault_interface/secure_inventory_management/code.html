@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Global-Safe | Secure Inventory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=JetBrains+Mono:wght@100..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ffb4ab",
+                    "surface-container-high": "#2a2a29",
+                    "surface-variant": "#353434",
+                    "surface": "#141313",
+                    "on-error-container": "#ffdad6",
+                    "primary": "#ffffff",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "on-secondary-container": "#b8b6d0",
+                    "outline": "#8e918e",
+                    "surface-container-highest": "#353434",
+                    "primary-fixed-dim": "#c7c6c4",
+                    "on-primary-fixed": "#1b1c1b",
+                    "on-secondary": "#2f2e43",
+                    "secondary-container": "#47475d",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "primary-fixed": "#e3e2e0",
+                    "surface-dim": "#141313",
+                    "surface-tint": "#c7c6c4",
+                    "secondary-fixed": "#e2e0fc",
+                    "secondary": "#c6c4df",
+                    "primary-container": "#e3e2e0",
+                    "on-error": "#690005",
+                    "outline-variant": "#444845",
+                    "on-surface-variant": "#c4c7c4",
+                    "surface-container": "#201f1f",
+                    "on-tertiary-fixed": "#1b1b1b",
+                    "on-surface": "#e5e2e1",
+                    "secondary-fixed-dim": "#c6c4df",
+                    "on-primary-container": "#646463",
+                    "inverse-surface": "#e5e2e1",
+                    "tertiary": "#ffffff",
+                    "on-tertiary-container": "#646464",
+                    "background": "#141313",
+                    "surface-bright": "#3a3939",
+                    "on-secondary-fixed-variant": "#45455b",
+                    "error-container": "#93000a",
+                    "surface-container-lowest": "#0e0e0e",
+                    "inverse-on-surface": "#313030",
+                    "tertiary-fixed": "#e2e2e2",
+                    "surface-container-low": "#1c1b1b",
+                    "on-primary-fixed-variant": "#464746",
+                    "tertiary-container": "#e2e2e2",
+                    "inverse-primary": "#5e5e5d",
+                    "on-secondary-fixed": "#1a1a2e",
+                    "on-primary": "#303130",
+                    "on-background": "#e5e2e1",
+                    "on-tertiary": "#303030"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "32px",
+                    "margin": "64px",
+                    "stroke-thin": "2px",
+                    "stroke-heavy": "4px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Space Grotesk"],
+                    "label-technical": ["JetBrains Mono"],
+                    "headline-md": ["Space Grotesk"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-technical": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .chamfer-card {
+            clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+        }
+        .etched-line {
+            background-image: repeating-linear-gradient(90deg, #8e918e 0, #8e918e 1px, transparent 1px, transparent 4px);
+        }
+        .industrial-switch:checked + label {
+            background-color: #ffffff;
+            color: #141313;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface dark:bg-surface border-b-stroke-heavy border-outline dark:border-outline flex justify-between items-center w-full px-gutter h-16">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="security">security</span>
+<h1 class="font-headline-md text-headline-md font-bold uppercase tracking-tight text-primary dark:text-primary">GLOBAL-SAFE ARCHITECT</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-primary hover:text-on-primary transition-colors duration-0">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="mt-20 px-gutter mb-12">
+<!-- Search and Biometric Filter Section -->
+<section class="mb-gutter">
+<div class="bg-surface-container-low border-stroke-thin border-outline p-unit flex items-center gap-0">
+<div class="bg-surface-container-high px-4 py-3 flex items-center gap-3 flex-1 border-r-stroke-thin border-outline">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-label-technical text-label-technical uppercase placeholder:text-outline-variant" placeholder="QUERY INVENTORY TAGS..." type="text"/>
+</div>
+<button class="bg-surface-bright px-6 py-3 flex items-center gap-3 hover:bg-primary hover:text-on-primary transition-none border-r-stroke-thin border-outline">
+<span class="material-symbols-outlined" data-icon="fingerprint">fingerprint</span>
+<span class="font-label-technical text-label-technical uppercase hidden sm:inline">Biometric Lock</span>
+</button>
+<button class="bg-surface-container-highest px-6 py-3 flex items-center gap-2 hover:bg-primary hover:text-on-primary transition-none">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+<span class="font-label-technical text-label-technical uppercase hidden sm:inline">Tier</span>
+</button>
+</div>
+</section>
+<!-- Stats Overview Row -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-unit mb-gutter">
+<div class="bg-surface-container border-stroke-thin border-outline p-4">
+<p class="font-label-technical text-label-technical text-on-surface-variant uppercase">Vault Occupancy</p>
+<h2 class="font-headline-md text-headline-md text-primary">84.2%</h2>
+<div class="w-full h-1 bg-surface-container-highest mt-2">
+<div class="h-full bg-primary w-[84.2%]"></div>
+</div>
+</div>
+<div class="bg-surface-container border-stroke-thin border-outline p-4">
+<p class="font-label-technical text-label-technical text-on-surface-variant uppercase">Active Sensors</p>
+<h2 class="font-headline-md text-headline-md text-primary">1,204</h2>
+<div class="flex items-center gap-1 mt-2">
+<div class="w-2 h-2 bg-primary"></div>
+<span class="font-label-technical text-[10px] text-primary">OPERATIONAL</span>
+</div>
+</div>
+<div class="bg-surface-container border-stroke-thin border-outline p-4">
+<p class="font-label-technical text-label-technical text-on-surface-variant uppercase">Critical Logs</p>
+<h2 class="font-headline-md text-headline-md text-error">03</h2>
+<span class="font-label-technical text-[10px] text-error mt-2 block uppercase">Action Required</span>
+</div>
+<div class="bg-surface-container border-stroke-thin border-outline p-4">
+<p class="font-label-technical text-label-technical text-on-surface-variant uppercase">Access Level</p>
+<h2 class="font-headline-md text-headline-md text-primary">ALPHA</h2>
+<span class="font-label-technical text-[10px] text-on-surface-variant mt-2 block uppercase">Root Overwrite Active</span>
+</div>
+</section>
+<!-- Catalog Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Asset Card 1 -->
+<div class="bg-surface-container-low border-stroke-heavy border-outline chamfer-card p-6 relative group transition-all duration-300 hover:border-primary">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="font-label-technical text-[12px] bg-primary text-on-primary px-2 py-0.5 uppercase mb-2 inline-block">Tier 5 - Sovereign</span>
+<h3 class="font-headline-md text-headline-md text-primary leading-none uppercase tracking-tighter">Gold Bullion Block</h3>
+<p class="font-label-technical text-label-technical text-outline mt-1 uppercase">ID: GS-X992-BULL</p>
+</div>
+<div class="w-12 h-12 border-stroke-thin border-outline flex items-center justify-center bg-surface-container-high">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="lock">lock</span>
+</div>
+</div>
+<div class="aspect-video w-full bg-surface-container-highest mb-6 overflow-hidden border-stroke-thin border-outline relative">
+<img alt="Gold Bullion" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" data-alt="Close up high-contrast shot of stack of polished gold bars in a dark, high-security vault. The lighting is focused and dramatic, highlighting the metallic texture and sharp edges. The aesthetic is industrial and heavy, with dark indigo shadows and bright platinum reflections. The mood is one of immense value and unyielding security." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkQ-AsMAQpohJ0LBoNQFOXCfnMubMygk8E5gFl65GB9Nk0d6BAv9g66cx3hr9DZ80U6v1184q1UOp0bBs7deR_hBF1nfBXM-8zMeJ6_gRt8QLrNfCRX9zD-Yy30Wt-DfGdnBIEFEHGeMx7fcE-swQzWzNBsaeMskKJZcchJulBMir9e-7VI2VsztHss7IECVoIClxyy_zUF-4vH2nqioTONPU-Lnjon08jWINGT_rVPVuu8sevkgvnpU2OKbP2ekfHFqSAJhKsWSW0"/>
+<div class="absolute bottom-2 left-2 flex gap-1">
+<div class="w-2 h-2 bg-primary"></div>
+<div class="w-2 h-2 bg-primary"></div>
+<div class="w-2 h-2 bg-primary animate-pulse"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-unit mb-6">
+<div class="bg-surface-container-high border-stroke-thin border-outline p-3">
+<p class="font-label-technical text-[10px] text-outline uppercase">Weight Sensor</p>
+<p class="font-label-technical text-primary">12.44 KG</p>
+</div>
+<div class="bg-surface-container-high border-stroke-thin border-outline p-3">
+<p class="font-label-technical text-[10px] text-outline uppercase">Stability</p>
+<p class="font-label-technical text-primary">99.98%</p>
+</div>
+</div>
+<div class="border-t-stroke-thin border-outline pt-4">
+<p class="font-label-technical text-[10px] text-outline uppercase mb-2">Movement Log</p>
+<div class="space-y-1">
+<div class="flex justify-between font-label-technical text-[10px]">
+<span class="text-on-surface-variant">2024.10.12 14:00</span>
+<span class="text-primary uppercase">Routine Verification</span>
+</div>
+<div class="flex justify-between font-label-technical text-[10px]">
+<span class="text-on-surface-variant">2024.09.28 03:12</span>
+<span class="text-primary uppercase">Vault Shift Sync</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Asset Card 2 -->
+<div class="bg-surface-container-low border-stroke-heavy border-outline chamfer-card p-6 relative group transition-all duration-300 hover:border-primary">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="font-label-technical text-[12px] bg-primary text-on-primary px-2 py-0.5 uppercase mb-2 inline-block">Tier 4 - Legacy</span>
+<h3 class="font-headline-md text-headline-md text-primary leading-none uppercase tracking-tighter">Encryption Keys</h3>
+<p class="font-label-technical text-label-technical text-outline mt-1 uppercase">ID: CRYP-77-ALPHA</p>
+</div>
+<div class="w-12 h-12 border-stroke-thin border-outline flex items-center justify-center bg-surface-container-high">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="key">key</span>
+</div>
+</div>
+<div class="aspect-video w-full bg-surface-container-highest mb-6 overflow-hidden border-stroke-thin border-outline relative">
+<img alt="Hardware Ledger" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" data-alt="A physical cold storage hardware wallet sitting on a dark metallic surface. The setting is a technical laboratory or data center vault. The lighting is cold and blue-toned, emphasizing the technological nature of the asset. Sharp textures of aluminum and glass dominate. The mood is sterile, hyper-secure, and technically precise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLuNU385G-CVzbzT9fFVDGx7vRRqkGrpSqHgwUqJBQXDG2jsR_IzZxuZ4PLg8Ll9Wgt2S-cj762iMkgX8NS3MgyFzjLf3BQ7EzkRV3gMzd4UUQpFiOnl2cNhkWFlDVHIDyrpHoVcWB6TAjxZ4pPGRltuuoJc4BkgAvhcR8Ar1fibwHkraYJaxYV12Qcd8fufLtshSKm4q5TtMpBMOe9QC49nk1VXsJa_-ambODgzPCLe1YhrjsqogHtr3uz6kGm5kcxQ9KiD7VsGJn"/>
+<div class="absolute bottom-2 left-2 flex gap-1">
+<div class="w-2 h-2 bg-primary"></div>
+<div class="w-2 h-2 bg-primary"></div>
+<div class="w-2 h-2 bg-primary animate-pulse"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-unit mb-6">
+<div class="bg-surface-container-high border-stroke-thin border-outline p-3">
+<p class="font-label-technical text-[10px] text-outline uppercase">Thermal State</p>
+<p class="font-label-technical text-primary">18.2°C</p>
+</div>
+<div class="bg-surface-container-high border-stroke-thin border-outline p-3">
+<p class="font-label-technical text-[10px] text-outline uppercase">Access Log</p>
+<p class="font-label-technical text-primary">48h Clean</p>
+</div>
+</div>
+<div class="border-t-stroke-thin border-outline pt-4">
+<p class="font-label-technical text-[10px] text-outline uppercase mb-2">Movement Log</p>
+<div class="space-y-1">
+<div class="flex justify-between font-label-technical text-[10px]">
+<span class="text-on-surface-variant">2024.10.15 09:44</span>
+<span class="text-primary uppercase">Remote Handshake</span>
+</div>
+<div class="flex justify-between font-label-technical text-[10px]">
+<span class="text-on-surface-variant">2024.10.14 22:11</span>
+<span class="text-primary uppercase">Heartbeat Sync</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Asset Card 3 -->
+<div class="bg-surface-container-low border-stroke-heavy border-outline chamfer-card p-6 relative group transition-all duration-300 hover:border-primary">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="font-label-technical text-[12px] bg-surface-container-highest text-primary px-2 py-0.5 uppercase mb-2 inline-block border-stroke-thin border-outline">Tier 3 - Essential</span>
+<h3 class="font-headline-md text-headline-md text-primary leading-none uppercase tracking-tighter">Titanium Prototype</h3>
+<p class="font-label-technical text-label-technical text-outline mt-1 uppercase">ID: PROTO-X-001</p>
+</div>
+<div class="w-12 h-12 border-stroke-thin border-outline flex items-center justify-center bg-surface-container-high">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="precision_manufacturing">precision_manufacturing</span>
+</div>
+</div>
+<div class="aspect-video w-full bg-surface-container-highest mb-6 overflow-hidden border-stroke-thin border-outline relative">
+<img alt="Prototype Part" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" data-alt="A complex precision-engineered titanium mechanical part inside a protective glass display. The background is a dark, brutalist industrial warehouse with heavy steel beams and low-key lighting. The metallic surfaces of the object glint under sharp spotlights. The visual style is crisp, high-detail, and focused on material permanence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmJt2KJzKf01eM9A5W6VLKiv1fpxRj2kBdbX9emHiqA2q0zDkH5HDaAmfna7RTzwkYAfp2uSD1Z1_c1RiJE17lVtXG2ZaibNHYkij4fRk8IQmjWu3MlUAekkjW8Qk01xQ3IOaBtnr8e_13ydeoKGsL2Ux_glkH3kexxvwee2g9ZBfLxirjuzDeLmY4S2xpDmDLqgd0fDuGc2AvUfGFN9NPvMArVSfG9vS8SC3Bh3fMhkMuTU-X9qV6gghnfDa6lSKMpQ_IbbxZwh3x"/>
+<div class="absolute bottom-2 left-2 flex gap-1">
+<div class="w-2 h-2 bg-primary"></div>
+<div class="w-2 h-2 bg-outline"></div>
+<div class="w-2 h-2 bg-outline"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-unit mb-6">
+<div class="bg-surface-container-high border-stroke-thin border-outline p-3">
+<p class="font-label-technical text-[10px] text-outline uppercase">Seal Integrity</p>
+<p class="font-label-technical text-primary">VACUUM-LOCKED</p>
+</div>
+<div class="bg-surface-container-high border-stroke-thin border-outline p-3">
+<p class="font-label-technical text-[10px] text-outline uppercase">Weight Sensor</p>
+<p class="font-label-technical text-primary">2.88 KG</p>
+</div>
+</div>
+<div class="border-t-stroke-thin border-outline pt-4">
+<p class="font-label-technical text-[10px] text-outline uppercase mb-2">Movement Log</p>
+<div class="space-y-1">
+<div class="flex justify-between font-label-technical text-[10px]">
+<span class="text-on-surface-variant">2024.08.11 11:20</span>
+<span class="text-primary uppercase">Deposition Date</span>
+</div>
+<div class="flex justify-between font-label-technical text-[10px]">
+<span class="text-on-surface-variant">2024.08.10 16:30</span>
+<span class="text-primary uppercase">Pre-Ingest Scan</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- System Logs / Asymmetric Layout Secondary Section -->
+<section class="mt-margin grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 bg-surface-container border-stroke-thin border-outline p-gutter">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline-md text-headline-md text-primary uppercase tracking-tighter flex items-center gap-4">
+<span class="etched-line h-px w-12 hidden md:block"></span>
+                        Movement Matrix
+                    </h3>
+<span class="font-label-technical text-label-technical bg-surface-bright px-4 py-1 border-stroke-thin border-outline text-primary">REAL-TIME MONITOR</span>
+</div>
+<div class="space-y-unit">
+<div class="grid grid-cols-12 bg-surface-container-high p-4 border-stroke-thin border-outline hover:bg-surface-bright transition-colors">
+<div class="col-span-2 font-label-technical text-outline">02:14:44</div>
+<div class="col-span-1 flex items-center"><span class="w-2 h-2 bg-primary"></span></div>
+<div class="col-span-6 font-label-technical text-primary uppercase">Vault Sector 04 - Pressure Calibration</div>
+<div class="col-span-3 text-right font-label-technical text-primary">STABLE</div>
+</div>
+<div class="grid grid-cols-12 bg-surface-container-high p-4 border-stroke-thin border-outline hover:bg-surface-bright transition-colors">
+<div class="col-span-2 font-label-technical text-outline">01:55:12</div>
+<div class="col-span-1 flex items-center"><span class="w-2 h-2 bg-error"></span></div>
+<div class="col-span-6 font-label-technical text-primary uppercase">Bay 12 Door Mechanical Override</div>
+<div class="col-span-3 text-right font-label-technical text-error">MANUAL AUTH</div>
+</div>
+<div class="grid grid-cols-12 bg-surface-container-high p-4 border-stroke-thin border-outline hover:bg-surface-bright transition-colors">
+<div class="col-span-2 font-label-technical text-outline">00:12:01</div>
+<div class="col-span-1 flex items-center"><span class="w-2 h-2 bg-primary"></span></div>
+<div class="col-span-6 font-label-technical text-primary uppercase">Inventory Batch SYNC-7788 Complete</div>
+<div class="col-span-3 text-right font-label-technical text-primary">VERIFIED</div>
+</div>
+<div class="grid grid-cols-12 bg-surface-container-high p-4 border-stroke-thin border-outline hover:bg-surface-bright transition-colors">
+<div class="col-span-2 font-label-technical text-outline">23:44:59</div>
+<div class="col-span-1 flex items-center"><span class="w-2 h-2 bg-primary"></span></div>
+<div class="col-span-6 font-label-technical text-primary uppercase">Global-Safe Core Heartbeat</div>
+<div class="col-span-3 text-right font-label-technical text-primary">OPTIMAL</div>
+</div>
+</div>
+</div>
+<div class="bg-primary text-on-primary p-gutter flex flex-col justify-between border-stroke-heavy border-primary shadow-xl">
+<div>
+<h4 class="font-headline-md text-headline-md font-bold uppercase mb-4 leading-none tracking-tighter">Emergency Extraction</h4>
+<p class="font-label-technical text-label-technical mb-8 opacity-80 uppercase">Initiate physical asset retrieval protocol. Requires three-party authentication.</p>
+</div>
+<div class="space-y-4">
+<div class="border-b-stroke-thin border-on-primary pb-2">
+<p class="font-label-technical text-[10px] uppercase opacity-70">Current Readiness</p>
+<p class="font-headline-md text-[24px]">98%</p>
+</div>
+<button class="w-full bg-on-primary text-primary py-4 font-headline-md text-headline-md uppercase font-bold hover:bg-on-primary/90 transition-none border-stroke-heavy border-on-primary">
+                        INITIATE
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface dark:bg-surface border-t-stroke-heavy border-outline dark:border-outline flex justify-around items-center w-full h-20">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest transition-none" href="#">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+<span class="font-label-technical text-[10px] uppercase">Vault</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest transition-none" href="#">
+<span class="material-symbols-outlined" data-icon="air">air</span>
+<span class="font-label-technical text-[10px] uppercase">Vitals</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary text-on-primary font-bold px-4 py-1 border-stroke-thin border-on-primary shadow-inner" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-technical text-[10px] uppercase">Inventory</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest transition-none" href="#">
+<span class="material-symbols-outlined" data-icon="emergency">emergency</span>
+<span class="font-label-technical text-[10px] uppercase">Access</span>
+</a>
+</nav>
+<!-- Desktop SideNav / NavigationDrawer (Logic) -->
+<aside class="hidden lg:flex flex-col p-gutter space-y-unit h-full w-80 fixed left-0 top-0 z-[60] bg-surface-container dark:bg-surface-container border-r-stroke-heavy border-outline dark:border-outline">
+<div class="mb-8">
+<h2 class="font-headline-md text-headline-md font-bold text-primary tracking-tighter uppercase mb-2">SECURITY CONFIG</h2>
+<div class="h-1 w-12 bg-primary"></div>
+</div>
+<nav class="space-y-4 flex-1">
+<a class="flex items-center gap-4 p-4 text-on-surface dark:text-on-surface hover:border-stroke-heavy hover:bg-surface-bright transition-none font-label-technical text-label-technical uppercase" href="#">
+<span class="material-symbols-outlined" data-icon="architecture">architecture</span>
+                Structural Integrity
+            </a>
+<a class="flex items-center gap-4 p-4 text-on-surface dark:text-on-surface hover:border-stroke-heavy hover:bg-surface-bright transition-none font-label-technical text-label-technical uppercase" href="#">
+<span class="material-symbols-outlined" data-icon="thermostat">thermostat</span>
+                Thermal Shielding
+            </a>
+<a class="flex items-center gap-4 p-4 bg-primary text-on-primary border-stroke-thin border-primary font-bold font-label-technical text-label-technical uppercase" href="#">
+<span class="material-symbols-outlined" data-icon="format_list_bulleted">format_list_bulleted</span>
+                Ballistic Logs
+            </a>
+<a class="flex items-center gap-4 p-4 text-on-surface dark:text-on-surface hover:border-stroke-heavy hover:bg-surface-bright transition-none font-label-technical text-label-technical uppercase" href="#">
+<span class="material-symbols-outlined" data-icon="construction">construction</span>
+                Maintenance Mode
+            </a>
+<a class="flex items-center gap-4 p-4 text-on-surface dark:text-on-surface hover:border-stroke-heavy hover:bg-surface-bright transition-none font-label-technical text-label-technical uppercase" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                System Settings
+            </a>
+</nav>
+<div class="bg-surface-container-low border-stroke-thin border-outline p-4">
+<p class="font-label-technical text-[10px] text-outline uppercase mb-1">Operator Profile</p>
+<p class="font-label-technical text-primary uppercase">ID: ARCH-001</p>
+<p class="font-label-technical text-[10px] text-primary bg-primary/10 border-stroke-thin border-primary/20 px-2 mt-2 py-0.5 inline-block uppercase">Authorized Personnel</p>
+</div>
+</aside>
+<!-- Adjust main content padding for desktop drawer -->
+<style>
+        @media (min-width: 1024px) {
+            body { padding-left: 320px; }
+            header { left: 320px; width: calc(100% - 320px); }
+        }
+    </style>
+</body></html>

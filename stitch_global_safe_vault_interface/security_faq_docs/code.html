@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GLOBAL-SAFE ARCHITECT | KNOWLEDGE BASE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#5e5e5d",
+                    "surface-dim": "#141313",
+                    "inverse-on-surface": "#313030",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "on-primary": "#303130",
+                    "on-tertiary-fixed": "#1b1b1b",
+                    "primary-fixed-dim": "#c7c6c4",
+                    "on-tertiary-container": "#646464",
+                    "on-secondary-container": "#b8b6d0",
+                    "secondary-fixed": "#e2e0fc",
+                    "outline": "#8e918e",
+                    "on-surface": "#e5e2e1",
+                    "on-secondary-fixed": "#1a1a2e",
+                    "background": "#141313",
+                    "primary-container": "#e3e2e0",
+                    "on-error": "#690005",
+                    "error-container": "#93000a",
+                    "tertiary-fixed": "#e2e2e2",
+                    "tertiary": "#ffffff",
+                    "on-primary-fixed": "#1b1c1b",
+                    "secondary": "#c6c4df",
+                    "secondary-fixed-dim": "#c6c4df",
+                    "secondary-container": "#47475d",
+                    "inverse-surface": "#e5e2e1",
+                    "on-background": "#e5e2e1",
+                    "tertiary-container": "#e2e2e2",
+                    "surface-bright": "#3a3939",
+                    "primary": "#ffffff",
+                    "outline-variant": "#444845",
+                    "surface-container-high": "#2a2a29",
+                    "on-surface-variant": "#c4c7c4",
+                    "on-secondary-fixed-variant": "#45455b",
+                    "on-primary-fixed-variant": "#464746",
+                    "surface-container-low": "#1c1b1b",
+                    "surface-tint": "#c7c6c4",
+                    "on-primary-container": "#646463",
+                    "on-error-container": "#ffdad6",
+                    "surface-container": "#201f1f",
+                    "surface-variant": "#353434",
+                    "surface": "#141313",
+                    "on-tertiary": "#303030",
+                    "on-secondary": "#2f2e43",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "primary-fixed": "#e3e2e0",
+                    "surface-container-highest": "#353434",
+                    "error": "#ffb4ab"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stroke-heavy": "4px",
+                    "gutter": "32px",
+                    "unit": "4px",
+                    "stroke-thin": "2px",
+                    "margin": "64px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "body-lg": ["Inter"],
+                    "label-technical": ["JetBrains Mono"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-technical": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .chamfer-card {
+            clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0% 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #141313; }
+        ::-webkit-scrollbar-thumb { background: #8e918e; border: 2px solid #141313; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full px-gutter h-20 max-w-full bg-surface-container dark:bg-surface-container border-b-stroke-heavy border-outline dark:border-outline fixed top-0 z-50">
+<div class="flex items-center gap-6">
+<span class="text-headline-md font-headline-md font-bold tracking-tighter text-primary dark:text-primary">GLOBAL-SAFE ARCHITECT</span>
+<div class="hidden md:flex gap-8 ml-8">
+<a class="text-primary font-bold border-b-stroke-heavy border-primary text-label-technical" href="#">VAULT_RESOURCES</a>
+<a class="text-on-surface-variant font-medium hover:bg-primary hover:text-on-primary transition-colors duration-0 text-label-technical" href="#">ARCHITECT_LOGS</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<input class="bg-surface-container-low border-stroke-thin border-outline text-label-technical px-4 py-2 w-64 focus:border-stroke-heavy focus:ring-0 focus:outline-none placeholder:text-on-surface-variant" placeholder="SEARCH_KNOWLEDGE_BASE..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-primary hover:text-on-primary transition-colors duration-0">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+</button>
+<button class="p-2 hover:bg-primary hover:text-on-primary transition-colors duration-0">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+</button>
+<button class="p-2 hover:bg-primary hover:text-on-primary transition-colors duration-0">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<button class="ml-4 bg-primary text-on-primary font-label-technical font-bold px-6 py-2 border-stroke-thin border-outline active:scale-95 transition-transform">
+                SYSTEM LOCKDOWN
+            </button>
+</div>
+</header>
+<div class="flex flex-1 pt-20 h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="flex flex-col h-full w-80 bg-surface-container-low dark:bg-surface-container-low border-r-stroke-heavy border-outline dark:border-outline py-gutter overflow-y-auto shrink-0">
+<div class="px-6 mb-8">
+<h2 class="text-headline-sm font-headline-sm font-bold text-primary">COMMAND CENTER</h2>
+<p class="text-label-technical text-on-surface-variant opacity-70">ADMINISTRATIVE_LEVEL_01</p>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<div class="text-label-technical text-on-surface-variant px-2 mb-2 tracking-widest uppercase text-xs">Categories</div>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary text-on-primary font-bold border-stroke-thin border-outline" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-technical">Structural Integrity</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-bright dark:hover:bg-surface-bright transition-none" href="#">
+<span class="material-symbols-outlined" data-icon="vital_signs">vital_signs</span>
+<span class="font-label-technical">Thermal Shielding</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-bright dark:hover:bg-surface-bright transition-none" href="#">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+<span class="font-label-technical">Ballistic Ratings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-bright dark:hover:bg-surface-bright transition-none" href="#">
+<span class="material-symbols-outlined" data-icon="emergency_home">emergency_home</span>
+<span class="font-label-technical">Emergency Protocols</span>
+</a>
+</nav>
+<div class="px-4 mt-8 space-y-4">
+<button class="w-full bg-surface-container-highest border-stroke-thin border-outline py-3 font-label-technical font-bold hover:bg-primary hover:text-on-primary transition-none">
+                    NEW VAULT SESSION
+                </button>
+<div class="pt-4 border-t border-outline-variant space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-primary transition-none" href="#">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span class="font-label-technical">Diagnostics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-primary transition-none" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="font-label-technical">Terminal</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 bg-surface-dim overflow-y-auto p-gutter scroll-smooth">
+<div class="max-w-5xl mx-auto">
+<header class="mb-12">
+<div class="flex items-center gap-4 mb-4">
+<div class="h-12 w-2 bg-primary"></div>
+<h1 class="text-headline-lg font-headline-lg text-primary uppercase">Knowledge Base</h1>
+</div>
+<p class="text-body-lg text-on-surface-variant max-w-3xl">
+                        Official technical documentation repository for the Global-Safe architectural standards. All specifications are hardened against high-impact thermal and ballistic threats.
+                    </p>
+</header>
+<!-- Technical Diagram Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+<div class="lg:col-span-8 chamfer-card bg-surface-container-low border-[3px] border-outline p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 border-l-[3px] border-b-[3px] border-outline bg-surface-dim font-label-technical text-xs">
+                            DIAG_ID: GS-X44
+                        </div>
+<img class="w-full h-80 object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-500" data-alt="A detailed, complex technical blueprint of a reinforced vault door mechanism shown in a dark, high-contrast digital interface. The diagram uses glowing white lines against a deep indigo background, featuring multiple mechanical gears, locking pins, and structural layers. The mood is industrial, precise, and heavily engineered, reflecting absolute security and high-end architectural brutalism with thick platinum silver borders." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKYGqiqYl4z_S8At8eu17T0LBWuw-KRuCEC_npvOMVN15tkEYxjklKoHDH7p3RPurgQ9SbB9wRja7THH77k8-wUZBbiZ0CqcZUpqJse8EgUC2gbW8uNClJOp6W1zdweHaswQKXldfTcghBZ8qaxRxwxpeleCAVjRshBHC1WPnBTsDZNZWkeLmwl4bGl2v3y6dXqc6xTCR1_X6lNexjHGHLTGqRXf116xWVtp9WMX6QSRRUtsHVWlQ5mAfdRIn23VjrpSPSkX0aD_Nq"/>
+<div class="mt-6 flex justify-between items-end">
+<div>
+<h3 class="font-headline-md text-primary mb-1 uppercase">GS-Tier 4 Shielding</h3>
+<p class="text-label-technical text-on-surface-variant uppercase">Reinforced Composite Framework</p>
+</div>
+<div class="flex gap-2">
+<div class="w-4 h-4 bg-primary animate-pulse"></div>
+<div class="w-4 h-4 bg-outline-variant"></div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-8">
+<div class="bg-surface-container-high border-[3px] border-outline p-6 flex-1 flex flex-col justify-center">
+<span class="text-label-technical text-on-surface-variant block mb-2">SYSTEM_HEALTH</span>
+<div class="text-headline-md font-bold text-primary mb-2">99.98%</div>
+<div class="w-full h-2 bg-surface-dim">
+<div class="h-full bg-primary w-[99.98%]"></div>
+</div>
+</div>
+<div class="bg-primary text-on-primary border-[3px] border-outline p-6 flex-1 flex flex-col justify-center">
+<span class="text-label-technical font-bold block mb-2">ACTIVE_THREAT_LEVEL</span>
+<div class="text-headline-md font-extrabold uppercase">Negligible</div>
+<div class="mt-4 flex gap-1">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+<span class="font-label-technical">SECURE_PERIMETER</span>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Accordion Section -->
+<section class="space-y-6">
+<div class="flex items-center justify-between border-b-[3px] border-outline pb-4">
+<h2 class="text-headline-md font-headline-md text-primary uppercase">Security Protocols FAQ</h2>
+<div class="flex gap-4">
+<button class="bg-surface-container-low border-stroke-thin border-outline px-4 py-1 text-label-technical hover:bg-primary hover:text-on-primary transition-none">EXPAND_ALL</button>
+<button class="bg-surface-container-low border-stroke-thin border-outline px-4 py-1 text-label-technical hover:bg-primary hover:text-on-primary transition-none">FILTER_BY_SPEC</button>
+</div>
+</div>
+<!-- FAQ Entry 1 -->
+<div class="border-[3px] border-outline bg-surface-container-low group">
+<div class="flex items-center justify-between p-6 cursor-pointer hover:bg-surface-bright transition-none">
+<div class="flex items-center gap-6">
+<div class="bg-primary text-on-primary font-label-technical font-bold p-3">01</div>
+<div>
+<h4 class="font-bold text-lg text-primary uppercase tracking-tight">How is structural integrity maintained during high-magnitude seismic events?</h4>
+<div class="flex gap-4 mt-1">
+<span class="text-label-technical text-xs px-2 py-0.5 bg-surface-dim border border-outline-variant">SPEC_ID: SI-2024-X1</span>
+<span class="text-label-technical text-xs px-2 py-0.5 bg-surface-dim border border-outline-variant">LAST_VERIFIED: 2024.05.12</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-4xl group-hover:rotate-180 transition-transform" data-icon="expand_more">expand_more</span>
+</div>
+<div class="p-8 border-t-[3px] border-outline bg-surface-dim">
+<p class="text-body-md text-on-surface leading-relaxed mb-4">
+                                Our structures utilize "Adaptive Foundation Dampeners" (AFD). In the event of seismic activity, the dampeners activate a fluid-viscous system that offsets up to 94% of lateral kinetic energy. The central core is suspended via a platinum-reinforced skeletal grid, allowing for independent movement of the outer shell.
+                            </p>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 border-stroke-thin border-outline-variant bg-surface-container">
+<div class="text-label-technical text-xs text-on-surface-variant uppercase mb-1">Max Tolerance</div>
+<div class="text-primary font-bold">9.2 Magnitude</div>
+</div>
+<div class="p-4 border-stroke-thin border-outline-variant bg-surface-container">
+<div class="text-label-technical text-xs text-on-surface-variant uppercase mb-1">Response Time</div>
+<div class="text-primary font-bold">0.004 ms</div>
+</div>
+</div>
+</div>
+</div>
+<!-- FAQ Entry 2 -->
+<div class="border-[3px] border-outline bg-surface-container-low group">
+<div class="flex items-center justify-between p-6 cursor-pointer hover:bg-surface-bright transition-none">
+<div class="flex items-center gap-6">
+<div class="bg-surface-container-highest text-on-surface-variant font-label-technical font-bold p-3">02</div>
+<div>
+<h4 class="font-bold text-lg text-primary uppercase tracking-tight">What are the specific thermal thresholds for GS-Tier shielding?</h4>
+<div class="flex gap-4 mt-1">
+<span class="text-label-technical text-xs px-2 py-0.5 bg-surface-dim border border-outline-variant">SPEC_ID: TS-992-A</span>
+<span class="text-label-technical text-xs px-2 py-0.5 bg-surface-dim border border-outline-variant">LAST_VERIFIED: 2024.06.01</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-4xl" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- FAQ Entry 3 -->
+<div class="border-[3px] border-outline bg-surface-container-low group">
+<div class="flex items-center justify-between p-6 cursor-pointer hover:bg-surface-bright transition-none">
+<div class="flex items-center gap-6">
+<div class="bg-surface-container-highest text-on-surface-variant font-label-technical font-bold p-3">03</div>
+<div>
+<h4 class="font-bold text-lg text-primary uppercase tracking-tight">Are ballistic ratings verified against experimental kinetic weapons?</h4>
+<div class="flex gap-4 mt-1">
+<span class="text-label-technical text-xs px-2 py-0.5 bg-surface-dim border border-outline-variant">SPEC_ID: BR-MK5-V</span>
+<span class="text-label-technical text-xs px-2 py-0.5 bg-surface-dim border border-outline-variant">LAST_VERIFIED: 2024.04.28</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-4xl" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- FAQ Entry 4 -->
+<div class="border-[3px] border-outline bg-surface-container-low group">
+<div class="flex items-center justify-between p-6 cursor-pointer hover:bg-surface-bright transition-none">
+<div class="flex items-center gap-6">
+<div class="bg-surface-container-highest text-on-surface-variant font-label-technical font-bold p-3">04</div>
+<div>
+<h4 class="font-bold text-lg text-primary uppercase tracking-tight">Protocol for localized atmospheric containment failure?</h4>
+<div class="flex gap-4 mt-1">
+<span class="text-label-technical text-xs px-2 py-0.5 bg-surface-dim border border-outline-variant">SPEC_ID: EP-000-X</span>
+<span class="text-label-technical text-xs px-2 py-0.5 bg-surface-dim border border-outline-variant">LAST_VERIFIED: 2024.02.15</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-4xl" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</section>
+<!-- Technical Specifications Grid -->
+<section class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+<div class="bg-surface-container p-6 border-l-stroke-heavy border-primary">
+<div class="font-label-technical text-on-surface-variant text-xs mb-4">ENGINEERING_STATS</div>
+<ul class="space-y-4">
+<li class="flex justify-between border-b border-outline-variant pb-2">
+<span class="text-on-surface-variant">Core Hardening</span>
+<span class="text-primary font-bold">GRADE_0A</span>
+</li>
+<li class="flex justify-between border-b border-outline-variant pb-2">
+<span class="text-on-surface-variant">Isolation Factor</span>
+<span class="text-primary font-bold">1200.5 PSI</span>
+</li>
+<li class="flex justify-between border-b border-outline-variant pb-2">
+<span class="text-on-surface-variant">Uptime SLA</span>
+<span class="text-primary font-bold">99.999%</span>
+</li>
+</ul>
+</div>
+<div class="bg-surface-container p-6 border-l-stroke-heavy border-primary">
+<div class="font-label-technical text-on-surface-variant text-xs mb-4">DEPLOYMENT_NETWORK</div>
+<ul class="space-y-4">
+<li class="flex justify-between border-b border-outline-variant pb-2">
+<span class="text-on-surface-variant">Active Vaults</span>
+<span class="text-primary font-bold">14,204</span>
+</li>
+<li class="flex justify-between border-b border-outline-variant pb-2">
+<span class="text-on-surface-variant">Global Sync</span>
+<span class="text-primary font-bold">LOCKED</span>
+</li>
+<li class="flex justify-between border-b border-outline-variant pb-2">
+<span class="text-on-surface-variant">Registry Hash</span>
+<span class="text-primary font-bold">GS#88A2</span>
+</li>
+</ul>
+</div>
+<div class="bg-surface-container p-6 border-l-stroke-heavy border-primary">
+<div class="font-label-technical text-on-surface-variant text-xs mb-4">AUTHENTICATION</div>
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 bg-surface-dim border-stroke-thin border-outline flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="fingerprint">fingerprint</span>
+</div>
+<div class="text-xs font-label-technical">Biometric Validation Active</div>
+</div>
+<button class="w-full py-2 bg-primary text-on-primary font-bold text-xs hover:opacity-90 transition-opacity">REQUEST ACCESS TOKEN</button>
+</div>
+</section>
+</div>
+</main>
+</div>
+<!-- Status Bar Footer -->
+<footer class="h-8 bg-surface-container border-t-stroke-thin border-outline flex items-center px- gutter justify-between text-[10px] font-label-technical text-on-surface-variant uppercase tracking-[0.2em]">
+<div class="flex gap-6 items-center">
+<span class="flex items-center gap-2">
+<span class="w-2 h-2 bg-primary"></span>
+                SYSTEM_STABLE
+            </span>
+<span>SECURE_PIPE_001_ACTIVE</span>
+<span>ENCRYPTION: AES-XTS-256</span>
+</div>
+<div class="flex gap-4">
+<span>TERMINAL_VER: 4.2.1-STABLE</span>
+<span class="text-primary">BUILD_TIMESTAMP: 2024.06.07_09:12:44</span>
+</div>
+</footer>
+</body></html>

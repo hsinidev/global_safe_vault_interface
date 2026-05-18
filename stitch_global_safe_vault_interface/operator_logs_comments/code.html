@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GLOBAL-SAFE ARCHITECT | OPERATOR LOGS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#5e5e5d",
+                    "surface-dim": "#141313",
+                    "inverse-on-surface": "#313030",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "on-primary": "#303130",
+                    "on-tertiary-fixed": "#1b1b1b",
+                    "primary-fixed-dim": "#c7c6c4",
+                    "on-tertiary-container": "#646464",
+                    "on-secondary-container": "#b8b6d0",
+                    "secondary-fixed": "#e2e0fc",
+                    "outline": "#8e918e",
+                    "on-surface": "#e5e2e1",
+                    "on-secondary-fixed": "#1a1a2e",
+                    "background": "#141313",
+                    "primary-container": "#e3e2e0",
+                    "on-error": "#690005",
+                    "error-container": "#93000a",
+                    "tertiary-fixed": "#e2e2e2",
+                    "tertiary": "#ffffff",
+                    "on-primary-fixed": "#1b1c1b",
+                    "secondary": "#c6c4df",
+                    "secondary-fixed-dim": "#c6c4df",
+                    "secondary-container": "#47475d",
+                    "inverse-surface": "#e5e2e1",
+                    "on-background": "#e5e2e1",
+                    "tertiary-container": "#e2e2e2",
+                    "surface-bright": "#3a3939",
+                    "primary": "#ffffff",
+                    "outline-variant": "#444845",
+                    "surface-container-high": "#2a2a29",
+                    "on-surface-variant": "#c4c7c4",
+                    "on-secondary-fixed-variant": "#45455b",
+                    "on-primary-fixed-variant": "#464746",
+                    "surface-container-low": "#1c1b1b",
+                    "surface-tint": "#c7c6c4",
+                    "on-primary-container": "#646463",
+                    "on-error-container": "#ffdad6",
+                    "surface-container": "#201f1f",
+                    "surface-variant": "#353434",
+                    "surface": "#141313",
+                    "on-tertiary": "#303030",
+                    "on-secondary": "#2f2e43",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "primary-fixed": "#e3e2e0",
+                    "surface-container-highest": "#353434",
+                    "error": "#ffb4ab"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stroke-heavy": "4px",
+                    "gutter": "32px",
+                    "unit": "4px",
+                    "stroke-thin": "2px",
+                    "margin": "64px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "body-lg": ["Inter"],
+                    "label-technical": ["JetBrains Mono"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-technical": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .hardened-card {
+            border: 2px solid #e5e2e1;
+            background-color: #1a1a2e;
+        }
+        .primary-armored {
+            border-width: 4px;
+            clip-path: polygon(10px 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% 10px);
+        }
+        .industrial-switch-on {
+            background-color: #ffffff;
+            color: #000000;
+            box-shadow: inset 2px 2px 0px rgba(0,0,0,0.2);
+        }
+        .etched-line {
+            border-top: 1px solid rgba(229, 226, 225, 0.2);
+            height: 1px;
+            width: 100%;
+        }
+        .status-light-blink {
+            animation: binary-flicker 1s steps(1) infinite;
+        }
+        @keyframes binary-flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full px-gutter h-20 max-w-full bg-surface-container border-b-stroke-heavy border-outline fixed top-0 z-50">
+<div class="flex items-center gap-4">
+<span class="text-headline-md font-headline-md font-bold tracking-tighter text-primary">GLOBAL-SAFE ARCHITECT</span>
+</div>
+<div class="hidden md:flex flex-1 max-w-xl mx-gutter">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-stroke-thin border-outline py-2 pl-12 pr-4 font-label-technical focus:border-stroke-heavy focus:ring-0 text-primary" placeholder="QUERY ENCRYPTED LOGS..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary hover:bg-primary hover:text-on-primary p-2 cursor-pointer transition-colors duration-0" data-icon="security">security</span>
+<span class="material-symbols-outlined text-primary hover:bg-primary hover:text-on-primary p-2 cursor-pointer transition-colors duration-0" data-icon="notifications_active">notifications_active</span>
+<span class="material-symbols-outlined text-primary hover:bg-primary hover:text-on-primary p-2 cursor-pointer transition-colors duration-0" data-icon="settings">settings</span>
+</div>
+<button class="bg-primary text-on-primary font-bold px-6 py-2 border-stroke-thin border-outline hover:bg-surface-bright transition-none active:scale-95">
+                SYSTEM LOCKDOWN
+            </button>
+</div>
+</header>
+<div class="flex flex-1 pt-20">
+<!-- SideNavBar -->
+<aside class="hidden lg:flex flex-col h-[calc(100vh-80px)] py-gutter border-r-stroke-heavy border-outline bg-surface-container-low w-80 fixed left-0 overflow-y-auto">
+<div class="px-6 mb-8">
+<h2 class="text-headline-sm font-headline-sm font-bold text-primary">COMMAND CENTER</h2>
+<p class="text-label-technical text-on-surface-variant opacity-70">ADMINISTRATIVE_LEVEL_01</p>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<div class="p-3 text-on-surface-variant hover:text-primary hover:bg-surface-bright cursor-pointer flex items-center gap-3 font-label-technical">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+                    Inventory
+                </div>
+<div class="p-3 text-on-surface-variant hover:text-primary hover:bg-surface-bright cursor-pointer flex items-center gap-3 font-label-technical">
+<span class="material-symbols-outlined" data-icon="vital_signs">vital_signs</span>
+                    Life Support
+                </div>
+<div class="p-3 bg-primary text-on-primary font-bold border-stroke-thin border-outline flex items-center gap-3 font-label-technical">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+                    Access Logs
+                </div>
+</nav>
+<div class="px-4 mt-8">
+<button class="w-full bg-surface-variant border-stroke-heavy border-primary text-primary font-bold py-4 hover:bg-primary hover:text-on-primary transition-none flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="add_box">add_box</span>
+                    NEW VAULT SESSION
+                </button>
+</div>
+<div class="mt-auto px-4 pt-8 space-y-2 border-t border-outline/20">
+<div class="p-3 text-on-surface-variant hover:text-primary hover:bg-surface-bright cursor-pointer flex items-center gap-3 font-label-technical">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+                    Diagnostics
+                </div>
+<div class="p-3 text-on-surface-variant hover:text-primary hover:bg-surface-bright cursor-pointer flex items-center gap-3 font-label-technical">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+                    Terminal
+                </div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 lg:ml-80 p-gutter bg-surface-dim min-h-full">
+<div class="max-w-6xl mx-auto space-y-gutter">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between border-b-stroke-heavy border-outline pb-4 gap-4">
+<div>
+<h1 class="text-headline-lg font-headline-lg text-primary uppercase tracking-tight">Operator logs</h1>
+<p class="text-label-technical text-secondary font-medium">SUB-LEVEL 04 | BALLISTIC TESTING FACILITY</p>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2 bg-surface-container px-4 py-2 border-stroke-thin border-outline">
+<div class="w-3 h-3 bg-primary status-light-blink"></div>
+<span class="text-label-technical text-on-surface">LIVE_FEED_ON</span>
+</div>
+</div>
+</div>
+<!-- Discussion Interface (Terminal Style) -->
+<div class="space-y-6">
+<!-- Threaded Item 1 -->
+<div class="hardened-card primary-armored p-6 space-y-4">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-secondary-container border-stroke-thin border-outline flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="engineering">engineering</span>
+</div>
+<div>
+<h3 class="text-label-technical font-bold text-primary">CHIEF ENGINEER | V_SOKOLOV</h3>
+<p class="text-[10px] text-on-surface-variant opacity-60">STAMP: 2024.05.12 // 14:32:01 UTC</p>
+</div>
+</div>
+<span class="px-3 py-1 bg-on-secondary-fixed-variant text-on-secondary-fixed text-[10px] font-bold tracking-widest border border-outline">PRIORITY: HIGH</span>
+</div>
+<div class="pl-16">
+<p class="text-body-md text-on-surface leading-relaxed max-w-3xl">
+                                Ballistic Testing on Vault Door Sector 7-G completed. Kinetic energy absorption exceeded parameters by 14%. Minor fracturing observed on secondary tungsten plates. Recommend immediate reinforcement of structural hinge pins before next stress cycle.
+                            </p>
+<div class="mt-4 flex flex-wrap gap-4">
+<div class="bg-surface-container-highest border-stroke-thin border-outline p-3 flex items-center gap-4 min-w-[240px]">
+<span class="material-symbols-outlined text-primary" data-icon="data_object">data_object</span>
+<div class="font-label-technical">
+<div class="text-[10px] text-on-surface-variant">ATTACHMENT: RAW_STRESS_DATA.JSON</div>
+<div class="text-xs text-primary">SIZE: 1.4 MB</div>
+</div>
+<span class="material-symbols-outlined ml-auto text-on-surface-variant cursor-pointer hover:text-primary" data-icon="download">download</span>
+</div>
+</div>
+</div>
+<div class="pl-16 pt-4 border-l-2 border-outline/30 flex gap-4">
+<button class="text-label-technical text-secondary hover:text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="reply">reply</span> REPLY_ACCESS
+                            </button>
+<button class="text-label-technical text-on-surface-variant hover:text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="verified_user">verified_user</span> AUTHENTICATE_LOG
+                            </button>
+</div>
+</div>
+<!-- Threaded Item 2 (Nested Reply) -->
+<div class="ml-12 md:ml-24 hardened-card p-6 border-l-stroke-heavy border-l-primary space-y-4">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-secondary-container border-stroke-thin border-outline flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="admin_panel_settings">admin_panel_settings</span>
+</div>
+<div>
+<h3 class="text-label-technical font-bold text-primary">SECURITY ADMIN | J_REED</h3>
+<p class="text-[10px] text-on-surface-variant opacity-60">STAMP: 2024.05.12 // 15:04:45 UTC</p>
+</div>
+</div>
+</div>
+<div class="pl-14">
+<p class="text-body-md text-on-surface-variant leading-relaxed">
+                                Understood. Reinforcement request acknowledged. Level 4 technicians are dispatched for hinge pin replacement. Facility Sector 7-G is now under lockdown until repairs are verified.
+                            </p>
+</div>
+</div>
+<!-- Threaded Item 3 -->
+<div class="hardened-card p-6 space-y-4">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-highest border-stroke-thin border-outline flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="build">build</span>
+</div>
+<div>
+<h3 class="text-label-technical font-bold text-primary">SENIOR ARCHITECT | M_CHEN</h3>
+<p class="text-[10px] text-on-surface-variant opacity-60">STAMP: 2024.05.11 // 09:15:33 UTC</p>
+</div>
+</div>
+</div>
+<div class="pl-16">
+<p class="text-body-md text-on-surface leading-relaxed max-w-3xl">
+                                Structural repairs in the East Wing seismic buffer are complete. Hydraulic fluid pressure has stabilized at 4500 PSI. No leaks detected during the 24-hour hold period.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Input Section -->
+<div class="hardened-card p-8 bg-surface-container-lowest border-stroke-heavy border-outline space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="text-headline-sm font-headline-sm text-primary uppercase font-bold">New Log entry</h2>
+<div class="text-label-technical text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="lock_open">lock_open</span>
+                            SECURE_CHANNEL_ACTIVE
+                        </div>
+</div>
+<div class="space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="text-label-technical text-on-surface-variant block">OPERATOR_ID</label>
+<div class="bg-surface-container p-3 border-stroke-thin border-outline font-label-technical text-primary">ADMIN_OVERRIDE_01</div>
+</div>
+<div class="space-y-1">
+<label class="text-label-technical text-on-surface-variant block">LOG_CLASSIFICATION</label>
+<select class="w-full bg-surface-container border-stroke-thin border-outline p-3 font-label-technical text-primary focus:border-primary focus:ring-0">
+<option>BALLISTIC TESTING</option>
+<option>STRUCTURAL REPAIRS</option>
+<option>SYSTEM MAINTENANCE</option>
+<option>SECURITY BREACH</option>
+</select>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-label-technical text-on-surface-variant block">DATA_SUMMARY</label>
+<textarea class="w-full bg-surface-container border-stroke-thin border-outline p-4 font-label-technical text-primary placeholder:opacity-30 focus:border-stroke-heavy focus:ring-0" placeholder="ENTER TECHNICAL DETAILS HERE..." rows="4"></textarea>
+</div>
+<div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-4">
+<button class="flex items-center gap-3 px-6 py-4 bg-surface-container-high border-stroke-thin border-outline text-secondary font-label-technical hover:bg-secondary-container hover:text-primary transition-none w-full sm:w-auto">
+<span class="material-symbols-outlined" data-icon="attachment">attachment</span>
+                                ATTACH SYSTEM DATA
+                            </button>
+<button class="bg-primary text-on-primary font-bold text-headline-sm px-12 py-4 border-stroke-heavy border-outline hover:bg-surface-bright transition-none active:scale-95 w-full sm:w-auto uppercase tracking-tighter">
+                                Commit Log
+                            </button>
+</div>
+</div>
+</div>
+<!-- Terminal Footer Stats -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 pb-gutter">
+<div class="hardened-card p-4 border-outline/50 flex flex-col items-center">
+<span class="text-[10px] text-on-surface-variant uppercase font-bold">Active Sessions</span>
+<span class="text-headline-sm font-headline-md text-primary">42</span>
+</div>
+<div class="hardened-card p-4 border-outline/50 flex flex-col items-center">
+<span class="text-[10px] text-on-surface-variant uppercase font-bold">Storage Capacity</span>
+<span class="text-headline-sm font-headline-md text-primary">89%</span>
+</div>
+<div class="hardened-card p-4 border-outline/50 flex flex-col items-center">
+<span class="text-[10px] text-on-surface-variant uppercase font-bold">Threat Level</span>
+<span class="text-headline-sm font-headline-md text-error">NULL</span>
+</div>
+<div class="hardened-card p-4 border-outline/50 flex flex-col items-center">
+<span class="text-[10px] text-on-surface-variant uppercase font-bold">Sync Integrity</span>
+<span class="text-headline-sm font-headline-md text-primary">100%</span>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Background Decoration -->
+<div class="fixed inset-0 pointer-events-none z-[-1] opacity-5">
+<div class="absolute inset-0" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 40px 40px;"></div>
+</div>
+</body></html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#5e5e5d",
+            "surface-dim": "#141313",
+            "inverse-on-surface": "#313030",
+            "surface-container-lowest": "#0e0e0e",
+            "on-tertiary-fixed-variant": "#474747",
+            "on-primary": "#303130",
+            "on-tertiary-fixed": "#1b1b1b",
+            "primary-fixed-dim": "#c7c6c4",
+            "on-tertiary-container": "#646464",
+            "on-secondary-container": "#b8b6d0",
+            "secondary-fixed": "#e2e0fc",
+            "outline": "#8e918e",
+            "on-surface": "#e5e2e1",
+            "on-secondary-fixed": "#1a1a2e",
+            "background": "#141313",
+            "primary-container": "#e3e2e0",
+            "on-error": "#690005",
+            "error-container": "#93000a",
+            "tertiary-fixed": "#e2e2e2",
+            "tertiary": "#ffffff",
+            "on-primary-fixed": "#1b1c1b",
+            "secondary": "#c6c4df",
+            "secondary-fixed-dim": "#c6c4df",
+            "secondary-container": "#47475d",
+            "inverse-surface": "#e5e2e1",
+            "on-background": "#e5e2e1",
+            "tertiary-container": "#e2e2e2",
+            "surface-bright": "#3a3939",
+            "primary": "#ffffff",
+            "outline-variant": "#444845",
+            "surface-container-high": "#2a2a29",
+            "on-surface-variant": "#c4c7c4",
+            "on-secondary-fixed-variant": "#45455b",
+            "on-primary-fixed-variant": "#464746",
+            "surface-container-low": "#1c1b1b",
+            "surface-tint": "#c7c6c4",
+            "on-primary-container": "#646463",
+            "on-error-container": "#ffdad6",
+            "surface-container": "#201f1f",
+            "surface-variant": "#353434",
+            "surface": "#141313",
+            "on-tertiary": "#303030",
+            "on-secondary": "#2f2e43",
+            "tertiary-fixed-dim": "#c6c6c6",
+            "primary-fixed": "#e3e2e0",
+            "surface-container-highest": "#353434",
+            "error": "#ffb4ab"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "stroke-heavy": "4px",
+            "gutter": "32px",
+            "unit": "4px",
+            "stroke-thin": "2px",
+            "margin": "64px"
+          },
+          "fontFamily": {
+            "headline-md": ["Space Grotesk"],
+            "headline-lg": ["Space Grotesk"],
+            "body-lg": ["Inter"],
+            "label-technical": ["JetBrains Mono"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+            "label-technical": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
+            "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #000000;
+      color: #e5e2e1;
+      font-family: 'Inter', sans-serif;
+    }
+    .vault-card {
+      border: 2px solid #8e918e; /* Platinum/Outline */
+      background-color: #1a1a2e; /* Deep Indigo Panel */
+      transition: all 0.2s ease;
+    }
+    .vault-card-primary {
+      border: 4px solid #ffffff;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 90% 100%, 0 100%);
+    }
+    .industrial-switch-on {
+      background-color: #ffffff;
+      color: #000000;
+      border: 2px solid #ffffff;
+    }
+    .industrial-switch-off {
+      background-color: #1a1a2e;
+      color: #e5e2e1;
+      border: 2px solid #8e918e;
+    }
+    .status-square {
+      width: 12px;
+      height: 12px;
+      display: inline-block;
+    }
+    .etched-line {
+      border-bottom: 1px solid rgba(142, 145, 142, 0.3);
+    }
+  </style>
+</head>
+<body class="overflow-hidden">
+<!-- TOP NAV BAR -->
+<header class="flex justify-between items-center w-full px-gutter h-20 max-w-full bg-surface-container border-b-stroke-heavy border-outline fixed top-0 z-50">
+<div class="flex items-center gap-6">
+<h1 class="text-headline-md font-headline-md font-bold tracking-tighter text-primary">GLOBAL-SAFE ARCHITECT</h1>
+<div class="h-8 w-px bg-outline"></div>
+<div class="flex gap-4">
+<button class="bg-error text-on-error font-label-technical px-6 py-2 border-stroke-thin border-error hover:invert transition-all">SYSTEM LOCKDOWN</button>
+<button class="bg-surface-container-highest text-primary border-stroke-thin border-outline px-6 py-2 font-label-technical hover:bg-primary hover:text-on-primary">EVACUATE</button>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform" data-icon="security">security</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform" data-icon="notifications_active">notifications_active</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform" data-icon="settings">settings</span>
+</div>
+<div class="bg-surface-variant px-4 py-2 border-stroke-thin border-outline flex items-center gap-3">
+<div class="status-square bg-error"></div>
+<span class="text-label-technical font-label-technical uppercase tracking-widest">Auth Level 01</span>
+</div>
+</div>
+</header>
+<div class="flex h-screen pt-20">
+<!-- SIDE NAV BAR -->
+<aside class="flex flex-col h-full w-80 bg-surface-container-low border-r-stroke-heavy border-outline py-gutter shrink-0">
+<div class="px-gutter mb-12">
+<h2 class="text-headline-sm font-headline-sm font-bold text-primary">COMMAND CENTER</h2>
+<p class="text-label-technical font-label-technical text-on-surface-variant opacity-70">ADMINISTRATIVE_LEVEL_01</p>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<div class="bg-primary text-on-primary font-bold border-stroke-thin border-outline flex items-center gap-4 px-6 py-4 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-technical font-label-technical uppercase tracking-wider">Inventory</span>
+</div>
+<div class="text-on-surface-variant hover:text-primary hover:bg-surface-bright flex items-center gap-4 px-6 py-4 cursor-pointer transition-none">
+<span class="material-symbols-outlined" data-icon="vital_signs">vital_signs</span>
+<span class="text-label-technical font-label-technical uppercase tracking-wider">Life Support</span>
+</div>
+<div class="text-on-surface-variant hover:text-primary hover:bg-surface-bright flex items-center gap-4 px-6 py-4 cursor-pointer transition-none">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+<span class="text-label-technical font-label-technical uppercase tracking-wider">Access Logs</span>
+</div>
+</nav>
+<div class="px-6 mb-8">
+<button class="w-full bg-surface-variant border-stroke-heavy border-primary py-4 text-primary font-bold text-label-technical hover:bg-primary hover:text-on-primary transition-colors">
+          NEW VAULT SESSION
+        </button>
+</div>
+<div class="px-4 border-t border-outline/30 pt-6 space-y-2">
+<div class="text-on-surface-variant hover:text-primary flex items-center gap-4 px-6 py-3 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span class="text-label-technical font-label-technical uppercase tracking-wider">Diagnostics</span>
+</div>
+<div class="text-on-surface-variant hover:text-primary flex items-center gap-4 px-6 py-3 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="text-label-technical font-label-technical uppercase tracking-wider">Terminal</span>
+</div>
+</div>
+</aside>
+<!-- MAIN CONTENT CANVAS -->
+<main class="flex-1 overflow-y-auto p-gutter bg-background scroll-smooth">
+<div class="grid grid-cols-12 gap-gutter">
+<!-- SYSTEM INTEGRITY AREA (Primary Status) -->
+<section class="col-span-12 lg:col-span-8">
+<div class="vault-card vault-card-primary p-8 h-full">
+<div class="flex justify-between items-start mb-10">
+<div>
+<h3 class="text-headline-md font-headline-md text-primary mb-2">SYSTEM INTEGRITY</h3>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="status-square bg-primary animate-pulse"></span>
+<span class="text-label-technical font-label-technical text-primary">OPERATIONAL</span>
+</div>
+<span class="text-label-technical font-label-technical text-outline">UPTIME: 4,291:12:04</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-headline-lg font-headline-lg text-primary">99.9%</span>
+<p class="text-label-technical font-label-technical text-outline">CORE LOAD</p>
+</div>
+</div>
+<!-- Real-time Graph Placeholder -->
+<div class="relative h-64 w-full bg-surface-dim border border-outline/20 p-4">
+<div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#8e918e 1px, transparent 1px), linear-gradient(90deg, #8e918e 1px, transparent 1px); background-size: 40px 40px;"></div>
+<div class="relative h-full w-full flex items-end gap-1">
+<!-- Simple bar representation for a graph -->
+<div class="flex-1 bg-primary/20 border-t-2 border-primary h-[40%]"></div>
+<div class="flex-1 bg-primary/20 border-t-2 border-primary h-[55%]"></div>
+<div class="flex-1 bg-primary/20 border-t-2 border-primary h-[30%]"></div>
+<div class="flex-1 bg-primary/20 border-t-2 border-primary h-[80%]"></div>
+<div class="flex-1 bg-primary/20 border-t-2 border-primary h-[60%]"></div>
+<div class="flex-1 bg-primary/20 border-t-2 border-primary h-[45%]"></div>
+<div class="flex-1 bg-primary/20 border-t-2 border-primary h-[90%]"></div>
+<div class="flex-1 bg-primary/20 border-t-2 border-primary h-[35%]"></div>
+<div class="flex-1 bg-primary/20 border-t-2 border-primary h-[50%]"></div>
+<div class="flex-1 bg-primary/20 border-t-2 border-primary h-[75%]"></div>
+<div class="flex-1 bg-primary/20 border-t-2 border-primary h-[20%]"></div>
+<div class="flex-1 bg-primary/20 border-t-2 border-primary h-[65%]"></div>
+</div>
+<div class="absolute top-4 right-4 text-label-technical font-label-technical text-primary bg-black/50 px-2 py-1">REAL-TIME TELEMETRY</div>
+</div>
+<div class="grid grid-cols-3 gap-6 mt-10">
+<div class="p-4 bg-surface-container-highest border-stroke-thin border-outline">
+<p class="text-label-technical font-label-technical text-outline uppercase">Oxygen Level</p>
+<p class="text-headline-sm font-headline-sm text-primary">21.4%</p>
+</div>
+<div class="p-4 bg-surface-container-highest border-stroke-thin border-outline">
+<p class="text-label-technical font-label-technical text-outline uppercase">Internal Temp</p>
+<p class="text-headline-sm font-headline-sm text-primary">18.5°C</p>
+</div>
+<div class="p-4 bg-surface-container-highest border-stroke-thin border-outline">
+<p class="text-label-technical font-label-technical text-outline uppercase">Radiation</p>
+<p class="text-headline-sm font-headline-sm text-primary">0.02 mSv</p>
+</div>
+</div>
+</div>
+</section>
+<!-- RECENT ACTIVITY LOG -->
+<section class="col-span-12 lg:col-span-4">
+<div class="vault-card p-6 h-full flex flex-col">
+<h3 class="text-headline-sm font-headline-sm text-primary mb-6 border-b-2 border-outline pb-2">BIOMETRIC ACCESS LOG</h3>
+<div class="flex-1 space-y-4 overflow-y-auto pr-2">
+<div class="p-3 border-l-stroke-heavy border-primary bg-surface-container-high">
+<p class="text-label-technical font-label-technical text-primary font-bold">ACCESS GRANTED: SECTOR 04</p>
+<p class="text-label-technical font-label-technical text-on-surface-variant text-xs">ID: ALPHA-092 | 14:22:01</p>
+</div>
+<div class="p-3 border-l-stroke-heavy border-error bg-surface-container-high">
+<p class="text-label-technical font-label-technical text-error font-bold">ACCESS DENIED: VAULT CORE</p>
+<p class="text-label-technical font-label-technical text-on-surface-variant text-xs">ID: UNKNOWN | 14:18:45</p>
+</div>
+<div class="p-3 border-l-stroke-heavy border-outline bg-surface-container-high">
+<p class="text-label-technical font-label-technical text-on-surface-variant font-bold">MAINTENANCE BYPASS</p>
+<p class="text-label-technical font-label-technical text-on-surface-variant text-xs">ID: SYS-ADMIN | 14:05:12</p>
+</div>
+<div class="p-3 border-l-stroke-heavy border-primary bg-surface-container-high">
+<p class="text-label-technical font-label-technical text-primary font-bold">ACCESS GRANTED: SECTOR 01</p>
+<p class="text-label-technical font-label-technical text-on-surface-variant text-xs">ID: BETA-011 | 13:58:30</p>
+</div>
+<div class="p-3 border-l-stroke-heavy border-primary bg-surface-container-high">
+<p class="text-label-technical font-label-technical text-primary font-bold">ACCESS GRANTED: SECTOR 01</p>
+<p class="text-label-technical font-label-technical text-on-surface-variant text-xs">ID: BETA-012 | 13:57:12</p>
+</div>
+</div>
+<button class="mt-6 w-full border-stroke-thin border-outline py-2 font-label-technical text-outline hover:text-primary hover:border-primary transition-colors">EXPORT FULL LOG</button>
+</div>
+</section>
+<!-- SECTOR GRID -->
+<section class="col-span-12">
+<div class="mb-6 flex justify-between items-end">
+<h3 class="text-headline-sm font-headline-sm text-primary uppercase tracking-widest">Active Vault Sectors</h3>
+<div class="flex gap-4">
+<span class="text-label-technical font-label-technical text-outline">TOTAL CAPACITY: 450/800</span>
+<span class="text-label-technical font-label-technical text-primary">SENSORS: ONLINE</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Sector 01 -->
+<div class="vault-card p-6 relative group hover:border-primary">
+<div class="flex justify-between items-start mb-4">
+<h4 class="text-label-technical font-label-technical text-primary font-bold">SECTOR 01</h4>
+<span class="status-square bg-primary"></span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center text-xs text-on-surface-variant font-label-technical">
+<span>PRESSURE</span>
+<span>1.02 ATM</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 border border-outline/20">
+<div class="bg-primary h-full w-[85%]"></div>
+</div>
+<div class="flex justify-between items-center text-xs text-on-surface-variant font-label-technical">
+<span>OCCUPANCY</span>
+<span>42/50</span>
+</div>
+</div>
+</div>
+<!-- Sector 02 -->
+<div class="vault-card p-6 relative group hover:border-primary">
+<div class="flex justify-between items-start mb-4">
+<h4 class="text-label-technical font-label-technical text-primary font-bold">SECTOR 02</h4>
+<span class="status-square bg-primary"></span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center text-xs text-on-surface-variant font-label-technical">
+<span>PRESSURE</span>
+<span>1.00 ATM</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 border border-outline/20">
+<div class="bg-primary h-full w-[12%]"></div>
+</div>
+<div class="flex justify-between items-center text-xs text-on-surface-variant font-label-technical">
+<span>OCCUPANCY</span>
+<span>06/50</span>
+</div>
+</div>
+</div>
+<!-- Sector 03 -->
+<div class="vault-card p-6 relative border-error/50">
+<div class="flex justify-between items-start mb-4">
+<h4 class="text-label-technical font-label-technical text-error font-bold">SECTOR 03</h4>
+<span class="status-square bg-error"></span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center text-xs text-on-surface-variant font-label-technical">
+<span>PRESSURE</span>
+<span class="text-error">0.85 ATM</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 border border-outline/20">
+<div class="bg-error h-full w-[100%]"></div>
+</div>
+<div class="flex justify-between items-center text-xs text-on-surface-variant font-label-technical">
+<span>OCCUPANCY</span>
+<span>LOCKED</span>
+</div>
+</div>
+</div>
+<!-- Sector 04 -->
+<div class="vault-card p-6 relative group hover:border-primary">
+<div class="flex justify-between items-start mb-4">
+<h4 class="text-label-technical font-label-technical text-primary font-bold">SECTOR 04</h4>
+<span class="status-square bg-primary"></span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center text-xs text-on-surface-variant font-label-technical">
+<span>PRESSURE</span>
+<span>1.05 ATM</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 border border-outline/20">
+<div class="bg-primary h-full w-[95%]"></div>
+</div>
+<div class="flex justify-between items-center text-xs text-on-surface-variant font-label-technical">
+<span>OCCUPANCY</span>
+<span>48/50</span>
+</div>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="vault-card p-6 relative group hover:border-primary">
+<h4 class="text-label-technical font-label-technical text-primary font-bold mb-4">SECTOR 05</h4>
+<p class="text-headline-sm font-headline-sm text-primary">VACANT</p>
+<p class="text-label-technical font-label-technical text-outline mt-2 uppercase">Sanitization Cycle: Active</p>
+</div>
+<div class="vault-card p-6 relative group hover:border-primary">
+<h4 class="text-label-technical font-label-technical text-primary font-bold mb-4">SECTOR 06</h4>
+<p class="text-headline-sm font-headline-sm text-primary">OFFLINE</p>
+<p class="text-label-technical font-label-technical text-outline mt-2 uppercase">Maintenance Protocol 12</p>
+</div>
+<div class="vault-card p-6 relative group hover:border-primary">
+<h4 class="text-label-technical font-label-technical text-primary font-bold mb-4">SECTOR 07</h4>
+<p class="text-headline-sm font-headline-sm text-primary">STABLE</p>
+<p class="text-label-technical font-label-technical text-outline mt-2 uppercase">Occupancy: 12/50</p>
+</div>
+<div class="vault-card p-6 relative group hover:border-primary">
+<h4 class="text-label-technical font-label-technical text-primary font-bold mb-4">SECTOR 08</h4>
+<p class="text-headline-sm font-headline-sm text-primary">STABLE</p>
+<p class="text-label-technical font-label-technical text-outline mt-2 uppercase">Occupancy: 28/50</p>
+</div>
+</div>
+</section>
+<!-- HARDWARE CONTROLS SECTION -->
+<section class="col-span-12">
+<div class="vault-card p-8 bg-surface-container-highest border-stroke-heavy border-outline">
+<h3 class="text-label-technical font-label-technical text-primary mb-8 border-b border-outline pb-4 uppercase tracking-[0.2em]">Hardware Override Matrix</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+<div class="flex flex-col gap-4">
+<span class="text-label-technical font-label-technical text-outline text-[10px] uppercase">Primary Gate</span>
+<button class="industrial-switch-on py-6 font-bold text-label-technical">CLOSED</button>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-label-technical font-label-technical text-outline text-[10px] uppercase">Ventilation</span>
+<button class="industrial-switch-on py-6 font-bold text-label-technical">ACTIVE</button>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-label-technical font-label-technical text-outline text-[10px] uppercase">Comms Array</span>
+<button class="industrial-switch-on py-6 font-bold text-label-technical">SECURE</button>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-label-technical font-label-technical text-outline text-[10px] uppercase">Backup Power</span>
+<button class="industrial-switch-off py-6 font-bold text-label-technical">STANDBY</button>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-label-technical font-label-technical text-outline text-[10px] uppercase">Blast Shields</span>
+<button class="industrial-switch-off py-6 font-bold text-label-technical">OPEN</button>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-label-technical font-label-technical text-outline text-[10px] uppercase">AI Override</span>
+<button class="industrial-switch-on py-6 font-bold text-label-technical">MANUAL</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+<!-- DECORATIVE CORNER ELEMENT -->
+<div class="fixed bottom-0 right-0 p-gutter pointer-events-none z-0 opacity-10">
+<div class="w-64 h-64 border-r-stroke-heavy border-b-stroke-heavy border-primary"></div>
+</div>
+</body></html>

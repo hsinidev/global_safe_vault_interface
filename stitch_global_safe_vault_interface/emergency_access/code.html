@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GLOBAL-SAFE ARCHITECT | Emergency Access</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ffb4ab",
+                    "surface-container-high": "#2a2a29",
+                    "surface-variant": "#353434",
+                    "surface": "#141313",
+                    "on-error-container": "#ffdad6",
+                    "primary": "#ffffff",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "on-secondary-container": "#b8b6d0",
+                    "outline": "#8e918e",
+                    "surface-container-highest": "#353434",
+                    "primary-fixed-dim": "#c7c6c4",
+                    "on-primary-fixed": "#1b1c1b",
+                    "on-secondary": "#2f2e43",
+                    "secondary-container": "#47475d",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "primary-fixed": "#e3e2e0",
+                    "surface-dim": "#141313",
+                    "surface-tint": "#c7c6c4",
+                    "secondary-fixed": "#e2e0fc",
+                    "secondary": "#c6c4df",
+                    "primary-container": "#e3e2e0",
+                    "on-error": "#690005",
+                    "outline-variant": "#444845",
+                    "on-surface-variant": "#c4c7c4",
+                    "surface-container": "#201f1f",
+                    "on-tertiary-fixed": "#1b1b1b",
+                    "on-surface": "#e5e2e1",
+                    "secondary-fixed-dim": "#c6c4df",
+                    "on-primary-container": "#646463",
+                    "inverse-surface": "#e5e2e1",
+                    "tertiary": "#ffffff",
+                    "on-tertiary-container": "#646464",
+                    "background": "#141313",
+                    "surface-bright": "#3a3939",
+                    "on-secondary-fixed-variant": "#45455b",
+                    "error-container": "#93000a",
+                    "surface-container-lowest": "#0e0e0e",
+                    "inverse-on-surface": "#313030",
+                    "tertiary-fixed": "#e2e2e2",
+                    "surface-container-low": "#1c1b1b",
+                    "on-primary-fixed-variant": "#464746",
+                    "tertiary-container": "#e2e2e2",
+                    "inverse-primary": "#5e5e5d",
+                    "on-secondary-fixed": "#1a1a2e",
+                    "on-primary": "#303130",
+                    "on-background": "#e5e2e1",
+                    "on-tertiary": "#303030"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "32px",
+                    "margin": "64px",
+                    "stroke-thin": "2px",
+                    "stroke-heavy": "4px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Space+Grotesk"],
+                    "label-technical": ["JetBrains+Mono"],
+                    "headline-md": ["Space+Grotesk"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-technical": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .brutal-card {
+            border: 2px solid #ffffff;
+            background-color: #201f1f;
+        }
+        .brutal-card-heavy {
+            border: 4px solid #ffffff;
+            clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+            background-color: #141313;
+        }
+        .status-blink {
+            animation: blink 0.5s steps(2, start) infinite;
+        }
+        @keyframes blink { to { visibility: hidden; } }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface border-b-stroke-heavy border-outline flex justify-between items-center px-gutter h-16">
+<div class="flex items-center gap-unit">
+<span class="material-symbols-outlined text-primary" data-icon="security">security</span>
+<h1 class="font-headline-md text-headline-md font-bold uppercase tracking-tight text-primary">GLOBAL-SAFE ARCHITECT</h1>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary" data-icon="notifications_active">notifications_active</span>
+</div>
+</header>
+<main class="pt-20 px-4 space-y-6">
+<!-- Critical Alerts Section -->
+<section class="mt-4">
+<div class="bg-error-container border-stroke-heavy border-error p-4 flex items-start gap-4">
+<span class="material-symbols-outlined text-on-error-container status-blink" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div>
+<h2 class="font-label-technical text-label-technical uppercase font-bold text-on-error-container">Critical Alert: Perimeter Breach Detected</h2>
+<p class="text-on-error-container text-sm opacity-90">Sector 7-B. Response units dispatched. Lockdown authorized.</p>
+</div>
+</div>
+</section>
+<!-- Access Request Notifications -->
+<section class="space-y-unit">
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-technical text-label-technical uppercase opacity-60">Pending Requests (2)</span>
+</div>
+<div class="brutal-card p-4 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-background" data-icon="person">person</span>
+</div>
+<div>
+<p class="font-label-technical text-primary">CHIEF_ENGINEER</p>
+<p class="text-xs text-on-surface-variant">VAULT_LEVEL_04</p>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 font-label-technical uppercase hover:bg-surface-bright active:scale-95 transition-all">Grant</button>
+</div>
+</section>
+<!-- Centered Biometric Section -->
+<section class="flex flex-col items-center py-8">
+<div class="relative group cursor-pointer">
+<div class="absolute -inset-4 border-stroke-thin border-outline opacity-20 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-48 h-48 brutal-card-heavy flex items-center justify-center relative overflow-hidden bg-surface-container">
+<!-- Scanner Sweep Effect -->
+<div class="absolute top-0 left-0 w-full h-1 bg-primary/30 blur-sm translate-y-24"></div>
+<span class="material-symbols-outlined text-primary text-7xl" data-icon="fingerprint" style="font-variation-settings: 'wght' 200;">fingerprint</span>
+</div>
+</div>
+<p class="mt-6 font-label-technical text-label-technical uppercase tracking-widest text-primary">Biometric Identity Verification Required</p>
+<p class="text-xs text-on-surface-variant mt-1">HOLD TO INITIATE REMOTE UNLOCK</p>
+</section>
+<!-- Industrial Action Buttons -->
+<section class="grid grid-cols-2 gap-4">
+<button class="brutal-card-heavy h-32 flex flex-col items-center justify-center gap-2 hover:bg-surface-bright group active:bg-primary">
+<span class="material-symbols-outlined text-primary text-4xl group-active:text-background" data-icon="emergency">emergency</span>
+<span class="font-label-technical text-label-technical uppercase font-bold group-active:text-background">Panic</span>
+</button>
+<button class="brutal-card-heavy h-32 border-error flex flex-col items-center justify-center gap-2 hover:bg-error group active:bg-error-container">
+<span class="material-symbols-outlined text-error text-4xl group-active:text-on-error-container" data-icon="gpp_bad" style="font-variation-settings: 'FILL' 1;">gpp_bad</span>
+<span class="font-label-technical text-label-technical uppercase font-bold text-error group-active:text-on-error-container">Lockdown</span>
+</button>
+</section>
+<!-- Status Grid -->
+<section class="brutal-card p-gutter">
+<h3 class="font-label-technical text-label-technical uppercase border-b border-outline-variant pb-2 mb-4">Hardware Integrity</h3>
+<div class="grid grid-cols-2 gap-y-4">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-primary"></div>
+<span class="text-xs font-label-technical uppercase">Primary_Core: Online</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-primary"></div>
+<span class="text-xs font-label-technical uppercase">Seal_PSI: Nominal</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-error status-blink"></div>
+<span class="text-xs font-label-technical uppercase text-error">Aux_Link: Degraded</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-primary"></div>
+<span class="text-xs font-label-technical uppercase">Grid: Secure</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface border-t-stroke-heavy border-outline flex justify-around items-center h-20">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+<span class="font-label-technical text-label-technical uppercase">Vault</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="air">air</span>
+<span class="font-label-technical text-label-technical uppercase">Vitals</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-technical text-label-technical uppercase">Inventory</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary text-on-primary font-bold px-4 py-1 border-stroke-thin border-on-primary" href="#">
+<span class="material-symbols-outlined" data-icon="emergency" style="font-variation-settings: 'FILL' 1;">emergency</span>
+<span class="font-label-technical text-label-technical uppercase">Access</span>
+</a>
+</nav>
+</body></html>
